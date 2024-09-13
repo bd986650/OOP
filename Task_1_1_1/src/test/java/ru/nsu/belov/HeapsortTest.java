@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class HeapsortTest {
-
     @Test
     public void testSort() {
         int[] arr = {-1, 1, 0, 5, -50, 0};
