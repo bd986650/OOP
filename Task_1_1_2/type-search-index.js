@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"ru.nsu.belov","l":"Card"},{"p":"ru.nsu.belov","l":"Deck"},{"p":"ru.nsu.belov","l":"Game"},{"p":"ru.nsu.belov","l":"Main"},{"p":"ru.nsu.belov","l":"Player"},{"p":"ru.nsu.belov","l":"Card.Rank"},{"p":"ru.nsu.belov","l":"Card.Suit"}]
