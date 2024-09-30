@@ -32,7 +32,7 @@ public class Card {
         this.rank = Rank.values()[rank % 13];
     }
 
-    public int point_system(boolean more_than_21) {
+    public int pointSystem(boolean more_than_21) {
         int count_points_by_card = rank.ordinal() + 1;
 
         if ((2 <= count_points_by_card) && (count_points_by_card <= 10)) {
