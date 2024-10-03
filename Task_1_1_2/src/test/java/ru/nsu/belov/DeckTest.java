@@ -8,15 +8,15 @@ import java.util.Collections;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class DeckTest {
-    private ArrayList<Card> new_cards_for_test = new ArrayList<>();
-
     @Test
-    void shuffle_test() {
-        ArrayList<Card> new_cards_for_test = new ArrayList<>();
-    }
+    void points_system_test() {
+        Card card;
 
-    @Test
-    void get_card_from_deck_test() {
-
+        for (Card.Suit suit : Card.Suit.values()) {
+            for (Card.Rank rank : Card.Rank.values()) {
+                card = new Card(suit, rank);
+                assertEquals(card.getValue(),card.rank.getValue());
+            }
+        }
     }
 }
