@@ -33,11 +33,11 @@ public class Card {
     }
 
     public int pointSystem(boolean more_than_21) {
-        int count_points_by_card = rank.ordinal() + 1;
+        int countPointsByCard = rank.ordinal() + 1;
 
-        if ((2 <= count_points_by_card) && (count_points_by_card <= 10)) {
-            return count_points_by_card;
-        } else if (count_points_by_card == 1) {
+        if ((2 <= countPointsByCard) && (countPointsByCard <= 10)) {
+            return countPointsByCard;
+        } else if (countPointsByCard == 1) {
             if (more_than_21) {
                 return 1;
             } else {
@@ -50,7 +50,7 @@ public class Card {
 
     @Override
     public String toString() {
-        int count_points_by_card = rank.ordinal() + 1;
-        return rank + " of " + suit + " " + "("+ count_points_by_card+ ")";
+        int countPointsByCard = rank.ordinal() + 1;
+        return rank + " of " + suit + " " + "("+ countPointsByCard+ ")";
     }
 }
