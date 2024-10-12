@@ -17,7 +17,7 @@ class PlayerTest {
         Card card = new Card(2, 9); // Hearts Ten
         player.addCard(card);
         assertEquals(1, player.hand.size());
-        assertEquals(card, player.hand.getFirst());
+        assertEquals(card, player.hand.get(0));
     }
 
     @Test
