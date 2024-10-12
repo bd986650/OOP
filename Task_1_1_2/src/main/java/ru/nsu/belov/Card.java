@@ -72,7 +72,7 @@ public class Card {
      */
     @Override
     public String toString() {
-        int countPointsByCard = rank.ordinal() + 1;
-        return rank + " of " + suit + " " + "("+ countPointsByCard+ ")";
+        int countPointsByCard = rank.ordinal()+1;
+        return rank+" of "+suit+" "+"("+countPointsByCard+")";
     }
 }

@@ -1,7 +1,7 @@
-
 package ru.nsu.belov;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * Deck

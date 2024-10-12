@@ -1,8 +1,10 @@
 package ru.nsu.belov;
 
-import org.junit.jupiter.api.*;
 import java.util.*;
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * Deck Test
