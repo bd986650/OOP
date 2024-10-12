@@ -2,17 +2,27 @@ package ru.nsu.belov;
 
 import java.util.Scanner;
 
+/**
+ * Game
+ */
 public class Game {
     public Deck deck;
     public Player player;
     public Dealer dealer;
 
+    /**
+     * Game
+     */
     public Game() {
         deck = new Deck();
         player = new Player("You");
         dealer = new Dealer();
     }
 
+    /**
+     * game start (main game function)
+     * @param numOfRoundsFlag
+     */
     public void gameStart(int numOfRoundsFlag ) {
         int round = 1;
         int playerWins = 0;
@@ -30,10 +40,10 @@ public class Game {
 
             System.out.println("The dealer dealt the cards");
 
-            player.addCard(deck.get_card_from_deck());
-            player.addCard(deck.get_card_from_deck());
-            dealer.addCard(deck.get_card_from_deck());
-            dealer.addCard(deck.get_card_from_deck());
+            player.addCard(deck.getCardFromDeck());
+            player.addCard(deck.getCardFromDeck());
+            dealer.addCard(deck.getCardFromDeck());
+            dealer.addCard(deck.getCardFromDeck());
 
             player.printHand();
             dealer.showStartHand();
@@ -81,7 +91,7 @@ public class Game {
                 String decision = scanner.nextLine();
 
                 if (decision.equalsIgnoreCase("1")) {
-                    player.addCard(deck.get_card_from_deck());
+                    player.addCard(deck.getCardFromDeck());
 
                     System.out.println("You have opened the card "+ player.hand.get(player.hand.size()-1));
 
@@ -115,7 +125,7 @@ public class Game {
             dealer.printHand();
 
             while (dealer.getPointForPlayer() < 17) {
-                dealer.addCard(deck.get_card_from_deck());
+                dealer.addCard(deck.getCardFromDeck());
 
                 System.out.println("Dealer is opening card " + dealer.hand.get(player.hand.size()-1));
 

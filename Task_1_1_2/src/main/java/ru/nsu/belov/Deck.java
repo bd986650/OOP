@@ -3,13 +3,22 @@ package ru.nsu.belov;
 
 import java.util.*;
 
+/**
+ * Deck
+ */
 public class Deck {
     ArrayList<Card> cards = new ArrayList<>();
 
+    /**
+     * Deck
+     */
     public Deck() {
         createDeck();
     }
 
+    /**
+     * create deck
+     */
     private void createDeck() {
         cards.clear();
         for (Card.Suit suit : Card.Suit.values()) {
@@ -20,11 +29,18 @@ public class Deck {
         shuffle();
     }
 
+    /**
+     * shuffle
+     */
     private void shuffle() {
         Collections.shuffle(cards);
     }
 
-    public Card get_card_from_deck() {
+    /**
+     * get card from deck
+     * @return
+     */
+    public Card getCardFromDeck() {
         if (cards.isEmpty()) {
             createDeck();
         }

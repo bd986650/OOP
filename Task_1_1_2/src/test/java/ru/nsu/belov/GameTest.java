@@ -9,17 +9,26 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Game Test
+ */
 public class GameTest {
     private Game game;
     private final ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
     private final PrintStream originalOut = System.out;
 
+    /**
+     * setup
+     */
     @BeforeEach
     void setUp() {
         game = new Game();
         System.setOut(new PrintStream(outputStream));
     }
 
+    /**
+     * test player wins with blackjack
+     */
     @Test
     void testPlayerWinsWithBlackjack() {
         game.deck = new Deck() {
@@ -30,8 +39,12 @@ public class GameTest {
                     new Card(Card.Suit.Clubs.ordinal(), Card.Rank.Ace.ordinal())
             ));
 
+            /**
+             * override get card from deck func
+             * @return
+             */
             @Override
-            public Card get_card_from_deck() {
+            public Card getCardFromDeck() {
                 return testDeck.remove(testDeck.size() - 1);
             }
         };
@@ -42,6 +55,9 @@ public class GameTest {
         assertTrue(output.contains("You have Blackjack!"));
     }
 
+    /**
+     * test player loses round
+     */
     @Test
     void testPlayerLosesRound() {
         game.deck = new Deck() {
@@ -53,8 +69,12 @@ public class GameTest {
                     new Card(Card.Suit.Clubs.ordinal(), Card.Rank.Ten.ordinal())
             ));
 
+            /**
+             * override get card from deck func
+             * @return
+             */
             @Override
-            public Card get_card_from_deck() {
+            public Card getCardFromDeck() {
                 return testDeck.remove(testDeck.size() - 1);
             }
         };
@@ -67,6 +87,9 @@ public class GameTest {
         assertTrue(output.contains("You've lost the round."));
     }
 
+    /**
+     * test game ends in tie
+     */
     @Test
     void testGameEndsInTie() {
         game.deck = new Deck() {
@@ -77,8 +100,12 @@ public class GameTest {
                     new Card(Card.Suit.Clubs.ordinal(), Card.Rank.Ten.ordinal())
             ));
 
+            /**
+             * override get card from deck func
+             * @return
+             */
             @Override
-            public Card get_card_from_deck() {
+            public Card getCardFromDeck() {
                 return testDeck.remove(testDeck.size() - 1);
             }
         };
@@ -91,6 +118,9 @@ public class GameTest {
         assertTrue(output.contains("It's a tie."));
     }
 
+    /**
+     * test dealer loses round
+     */
     @Test
     void testDealerLosesRound() {
 
@@ -104,8 +134,12 @@ public class GameTest {
                     new Card(Card.Suit.Clubs.ordinal(), Card.Rank.Ten.ordinal())
             ));
 
+            /**
+             * override get card from deck func
+             * @return
+             */
             @Override
-            public Card get_card_from_deck() {
+            public Card getCardFromDeck() {
                 return testDeck.remove(testDeck.size() - 1);
             }
         };
@@ -118,6 +152,9 @@ public class GameTest {
         assertTrue(output.contains("You have won the round!"));
     }
 
+    /**
+     * player win by score default
+     */
     @Test
     void playerWinByScoreDefault() {
         game.deck = new Deck() {
@@ -130,8 +167,12 @@ public class GameTest {
                     new Card(Card.Suit.Clubs.ordinal(), Card.Rank.Ten.ordinal())
             ));
 
+            /**
+             * override get card from deck func
+             * @return
+             */
             @Override
-            public Card get_card_from_deck() {
+            public Card getCardFromDeck() {
                 return testDeck.remove(testDeck.size() - 1);
             }
         };
@@ -144,6 +185,9 @@ public class GameTest {
         assertTrue(output.contains("You have won the round!"));
     }
 
+    /**
+     * get back
+     */
     @BeforeEach
     void getBack() {
         System.setOut(originalOut);

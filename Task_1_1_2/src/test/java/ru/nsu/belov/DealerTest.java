@@ -3,16 +3,23 @@ package ru.nsu.belov;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
+import static org.junit.jupiter.api.Assertions.*;
+
+/**
+ * Dealer Test
+ */
 class DealerTest {
 
     private Dealer dealer;
     private ByteArrayOutputStream outputStream;
     private PrintStream originalOut;
 
+    /**
+     * setup
+     */
     @BeforeEach
     void setUp() {
         dealer = new Dealer();
@@ -21,6 +28,9 @@ class DealerTest {
         System.setOut(new PrintStream(outputStream));
     }
 
+    /**
+     * test show start hand
+     */
     @Test
     void testShowStartHand() {
         dealer.addCard(new Card(3, 9)); // Hearts Ten
@@ -32,6 +42,9 @@ class DealerTest {
         assertTrue(outputStream.toString().contains(expectedOutput));
     }
 
+    /**
+     * test dealer score
+     */
     @Test
     void testDealerScore() {
         dealer.addCard(new Card(3, 12)); // Hearts King
@@ -41,6 +54,9 @@ class DealerTest {
         assertTrue(dealer.isBlackjack());
     }
 
+    /**
+     * tear down
+     */
     @AfterEach
     void tearDown() {
         System.setOut(originalOut);

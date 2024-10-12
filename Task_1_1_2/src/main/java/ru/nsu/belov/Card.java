@@ -1,6 +1,12 @@
 package ru.nsu.belov;
 
+/**
+ * Card
+ */
 public class Card {
+    /**
+     * Suit
+     */
     public enum Suit {
         Spades,
         Clubs,
@@ -8,6 +14,9 @@ public class Card {
         Hearts
     }
 
+    /**
+     * Rank
+     */
     public enum Rank {
         Ace,
         Two,
@@ -27,18 +36,28 @@ public class Card {
     Suit suit;
     Rank rank;
 
+    /**
+     * Card
+     * @param suit
+     * @param rank
+     */
     public Card(int suit, int rank) {
         this.suit = Suit.values()[suit % 4];
         this.rank = Rank.values()[rank % 13];
     }
 
-    public int pointSystem(boolean more_than_21) {
+    /**
+     * Point System
+     * @param moreThan21
+     * @return
+     */
+    public int pointSystem(boolean moreThan21) {
         int countPointsByCard = rank.ordinal() + 1;
 
         if ((2 <= countPointsByCard) && (countPointsByCard <= 10)) {
             return countPointsByCard;
         } else if (countPointsByCard == 1) {
-            if (more_than_21) {
+            if (moreThan21) {
                 return 1;
             } else {
                 return 11;
@@ -48,6 +67,9 @@ public class Card {
         }
     }
 
+    /**
+     * to String method
+     */
     @Override
     public String toString() {
         int countPointsByCard = rank.ordinal() + 1;
