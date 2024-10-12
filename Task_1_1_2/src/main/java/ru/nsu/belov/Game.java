@@ -83,7 +83,7 @@ public class Game {
                 if (decision.equalsIgnoreCase("1")) {
                     player.addCard(deck.get_card_from_deck());
 
-                    System.out.println("You have opened the card "+ player.hand.getLast());
+                    System.out.println("You have opened the card "+ player.hand.get(player.hand.size()-1));
 
                     player.printHand();
                     dealer.showStartHand();
@@ -117,7 +117,7 @@ public class Game {
             while (dealer.getPointForPlayer() < 17) {
                 dealer.addCard(deck.get_card_from_deck());
 
-                System.out.println("Dealer is opening card " + dealer.hand.getLast());
+                System.out.println("Dealer is opening card " + dealer.hand.get(player.hand.size()-1));
 
                 player.printHand();
                 dealer.printHand();

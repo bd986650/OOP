@@ -32,7 +32,7 @@ public class GameTest {
 
             @Override
             public Card get_card_from_deck() {
-                return testDeck.removeLast();
+                return testDeck.remove(testDeck.size() - 1);
             }
         };
 
@@ -55,7 +55,7 @@ public class GameTest {
 
             @Override
             public Card get_card_from_deck() {
-                return testDeck.removeLast();
+                return testDeck.remove(testDeck.size() - 1);
             }
         };
 
@@ -79,7 +79,7 @@ public class GameTest {
 
             @Override
             public Card get_card_from_deck() {
-                return testDeck.removeLast();
+                return testDeck.remove(testDeck.size() - 1);
             }
         };
 
@@ -106,7 +106,7 @@ public class GameTest {
 
             @Override
             public Card get_card_from_deck() {
-                return testDeck.removeLast();
+                return testDeck.remove(testDeck.size() - 1);
             }
         };
 
@@ -132,7 +132,7 @@ public class GameTest {
 
             @Override
             public Card get_card_from_deck() {
-                return testDeck.removeLast();
+                return testDeck.remove(testDeck.size() - 1);
             }
         };
 

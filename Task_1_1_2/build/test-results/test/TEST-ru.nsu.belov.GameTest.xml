@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ru.nsu.belov.GameTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2024-10-12T03:04:34" hostname="MacBook-Air-Danil-2.local" time="0.049">
+<testsuite name="ru.nsu.belov.GameTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-10-12T12:34:28" hostname="MacBook-Air-Danil-2.local" time="0.033">
   <properties/>
-  <testcase name="testPlayerWinsWithBlackjack()" classname="ru.nsu.belov.GameTest" time="0.035"/>
-  <testcase name="testDealerLosesRound()" classname="ru.nsu.belov.GameTest" time="0.002"/>
-  <testcase name="testPlayerLosesRound()" classname="ru.nsu.belov.GameTest" time="0.003"/>
-  <testcase name="testGameEndsInTie()" classname="ru.nsu.belov.GameTest" time="0.002"/>
-  <testcase name="playerWinByScoreDefault()" classname="ru.nsu.belov.GameTest" time="0.002"/>
+  <testcase name="testPlayerWinsWithBlackjack()" classname="ru.nsu.belov.GameTest" time="0.033"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
