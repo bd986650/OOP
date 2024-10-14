@@ -22,7 +22,7 @@ public class Game {
     /**
      * game start (main game function)
      *
-     * @param numOfRoundsFlag
+     * @param numOfRoundsFlag int
      */
     public void gameStart(int numOfRoundsFlag) {
         int round = 1;
@@ -53,7 +53,8 @@ public class Game {
                 dealerWins++;
                 playerWins++;
 
-                System.out.println("It's a tie. Score " + playerWins + ":" + dealerWins);
+                System.out.println("It's a tie. Score "
+                        + playerWins + ":" + dealerWins);
 
                 if (numOfRoundsFlag == 0) {
                     break;
@@ -63,7 +64,8 @@ public class Game {
             } else if (player.isBlackjack()) {
                 playerWins++;
 
-                System.out.println("You have Blackjack! You have won the round. Score " + playerWins + ":" + dealerWins);
+                System.out.println("You have Blackjack! You have won the round. Score "
+                        + playerWins + ":" + dealerWins);
 
                 if (numOfRoundsFlag == 0) {
                     break;
@@ -73,7 +75,8 @@ public class Game {
             } else if (dealer.isBlackjack()) {
                 dealerWins++;
 
-                System.out.println("Dealer has Blackjack! Dealer has won the round. Score " + playerWins + ":" + dealerWins);
+                System.out.println("Dealer has Blackjack! Dealer has won the round. Score "
+                        + playerWins + ":" + dealerWins);
 
                 if (numOfRoundsFlag == 0) {
                     break;
@@ -94,7 +97,8 @@ public class Game {
                 if (decision.equalsIgnoreCase("1")) {
                     player.addCard(deck.getCardFromDeck());
 
-                    System.out.println("You have opened the card " + player.hand.get(player.hand.size() - 1));
+                    System.out.println("You have opened the card "
+                            + player.hand.get(player.hand.size() - 1));
 
                     player.printHand();
                     dealer.showStartHand();
@@ -103,7 +107,8 @@ public class Game {
                         flag = 1;
                         dealerWins++;
 
-                        System.out.println("You've lost the round. Score " + playerWins + ":" + dealerWins);
+                        System.out.println("You've lost the round. Score "
+                                + playerWins + ":" + dealerWins);
 
                         break;
                     }
@@ -128,7 +133,8 @@ public class Game {
             while (dealer.getPointForPlayer() < 17) {
                 dealer.addCard(deck.getCardFromDeck());
 
-                System.out.println("Dealer is opening card " + dealer.hand.get(player.hand.size() - 1));
+                System.out.println("Dealer is opening card "
+                        + dealer.hand.get(player.hand.size() - 1));
 
                 player.printHand();
                 dealer.printHand();
@@ -137,7 +143,8 @@ public class Game {
             if (dealer.isLoser()) {
                 playerWins++;
 
-                System.out.println("You have won the round! Score " + playerWins + ":" + dealerWins);
+                System.out.println("You have won the round! Score "
+                        + playerWins + ":" + dealerWins);
 
                 if (numOfRoundsFlag == 0) {
                     break;
@@ -145,7 +152,8 @@ public class Game {
             } else if (player.getPointForPlayer() > dealer.getPointForPlayer()) {
                 playerWins++;
 
-                System.out.println("You have won the round! Score " + playerWins + ":" + dealerWins);
+                System.out.println("You have won the round! Score "
+                        + playerWins + ":" + dealerWins);
 
                 if (numOfRoundsFlag == 0) {
                     break;
@@ -153,7 +161,8 @@ public class Game {
             } else if (player.getPointForPlayer() < dealer.getPointForPlayer()) {
                 dealerWins++;
 
-                System.out.println("Dealer has won the round. Score " + playerWins + ":" + dealerWins);
+                System.out.println("Dealer has won the round. Score "
+                        + playerWins + ":" + dealerWins);
 
                 if (numOfRoundsFlag == 0) {
                     break;
