@@ -38,8 +38,8 @@ public class Card {
 
     /**
      * Card
-     * @param suit
-     * @param rank
+     * @param suit int
+     * @param rank int
      */
     public Card(int suit, int rank) {
         this.suit = Suit.values()[suit % 4];
@@ -48,11 +48,11 @@ public class Card {
 
     /**
      * Point System
-     * @param moreThan21
-     * @return
+     * @param moreThan21 boolean
+     * @return int
      */
     public int pointSystem(boolean moreThan21) {
-        int countPointsByCard = rank.ordinal() + 1;
+        int countPointsByCard = rank.ordinal()+1;
 
         if ((2 <= countPointsByCard) && (countPointsByCard <= 10)) {
             return countPointsByCard;
