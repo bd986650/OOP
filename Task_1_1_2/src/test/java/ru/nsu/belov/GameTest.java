@@ -13,7 +13,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
- * Game Test
+ * Game Test.
  */
 public class GameTest {
     private final ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
@@ -21,7 +21,7 @@ public class GameTest {
     private Game game;
 
     /**
-     * setup
+     * setup.
      */
     @BeforeEach
     void setUp() {
@@ -30,7 +30,7 @@ public class GameTest {
     }
 
     /**
-     * test player wins with blackjack
+     * test player wins with blackjack.
      */
     @Test
     void testPlayerWinsWithBlackjack() {
@@ -38,8 +38,8 @@ public class GameTest {
             public final List<Card> testDeck = new ArrayList<>(Arrays.asList(new Card(Card.Suit.Spades.ordinal(), Card.Rank.Ace.ordinal()), new Card(Card.Suit.Hearts.ordinal(), Card.Rank.Two.ordinal()), new Card(Card.Suit.Diamonds.ordinal(), Card.Rank.Ten.ordinal()), new Card(Card.Suit.Clubs.ordinal(), Card.Rank.Ace.ordinal())));
 
             /**
-             * override get card from deck func
-             * @return
+             * override get card from deck func.
+             * @return.
              */
             @Override
             public Card getCardFromDeck() {
@@ -54,7 +54,7 @@ public class GameTest {
     }
 
     /**
-     * test player loses round
+     * test player loses round.
      */
     @Test
     void testPlayerLosesRound() {
@@ -62,8 +62,8 @@ public class GameTest {
             public final List<Card> testDeck = new ArrayList<>(Arrays.asList(new Card(Card.Suit.Spades.ordinal(), Card.Rank.Two.ordinal()), new Card(Card.Suit.Spades.ordinal(), Card.Rank.Eight.ordinal()), new Card(Card.Suit.Spades.ordinal(), Card.Rank.Ten.ordinal()), new Card(Card.Suit.Hearts.ordinal(), Card.Rank.Ten.ordinal()), new Card(Card.Suit.Clubs.ordinal(), Card.Rank.Ten.ordinal())));
 
             /**
-             * override get card from deck func
-             * @return
+             * override get card from deck func.
+             * @return card.
              */
             @Override
             public Card getCardFromDeck() {
@@ -80,7 +80,7 @@ public class GameTest {
     }
 
     /**
-     * test game ends in tie
+     * test game ends in tie.
      */
     @Test
     void testGameEndsInTie() {
@@ -88,8 +88,8 @@ public class GameTest {
             public final List<Card> testDeck = new ArrayList<>(Arrays.asList(new Card(Card.Suit.Spades.ordinal(), Card.Rank.Eight.ordinal()), new Card(Card.Suit.Spades.ordinal(), Card.Rank.Ten.ordinal()), new Card(Card.Suit.Hearts.ordinal(), Card.Rank.Eight.ordinal()), new Card(Card.Suit.Clubs.ordinal(), Card.Rank.Ten.ordinal())));
 
             /**
-             * override get card from deck func
-             * @return
+             * override get card from deck func.
+             * @return card.
              */
             @Override
             public Card getCardFromDeck() {
@@ -106,7 +106,7 @@ public class GameTest {
     }
 
     /**
-     * test dealer loses round
+     * test dealer loses round.
      */
     @Test
     void testDealerLosesRound() {
@@ -116,8 +116,8 @@ public class GameTest {
             public final List<Card> testDeck = new ArrayList<>(Arrays.asList(new Card(Card.Suit.Spades.ordinal(), Card.Rank.Eight.ordinal()), new Card(Card.Suit.Spades.ordinal(), Card.Rank.Six.ordinal()), new Card(Card.Suit.Spades.ordinal(), Card.Rank.Ten.ordinal()), new Card(Card.Suit.Hearts.ordinal(), Card.Rank.Eight.ordinal()), new Card(Card.Suit.Clubs.ordinal(), Card.Rank.Ten.ordinal())));
 
             /**
-             * override get card from deck func
-             * @return
+             * override get card from deck func.
+             * @return card.
              */
             @Override
             public Card getCardFromDeck() {
@@ -134,7 +134,7 @@ public class GameTest {
     }
 
     /**
-     * player win by score default
+     * player win by score default.
      */
     @Test
     void playerWinByScoreDefault() {
@@ -142,8 +142,8 @@ public class GameTest {
             public final List<Card> testDeck = new ArrayList<>(Arrays.asList(new Card(Card.Suit.Hearts.ordinal(), Card.Rank.Three.ordinal()), new Card(Card.Suit.Spades.ordinal(), Card.Rank.Three.ordinal()), new Card(Card.Suit.Spades.ordinal(), Card.Rank.Six.ordinal()), new Card(Card.Suit.Spades.ordinal(), Card.Rank.Ten.ordinal()), new Card(Card.Suit.Hearts.ordinal(), Card.Rank.Eight.ordinal()), new Card(Card.Suit.Clubs.ordinal(), Card.Rank.Ten.ordinal())));
 
             /**
-             * override get card from deck func
-             * @return
+             * override get card from deck func.
+             * @return card.
              */
             @Override
             public Card getCardFromDeck() {
@@ -160,7 +160,7 @@ public class GameTest {
     }
 
     /**
-     * get back
+     * get back.
      */
     @BeforeEach
     void getBack() {

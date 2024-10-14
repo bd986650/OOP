@@ -3,7 +3,7 @@ package ru.nsu.belov;
 import java.util.Scanner;
 
 /**
- * Game
+ * Game.
  */
 public class Game {
     public Deck deck;
@@ -11,7 +11,7 @@ public class Game {
     public Dealer dealer;
 
     /**
-     * Game
+     * Game.
      */
     public Game() {
         deck = new Deck();
@@ -20,9 +20,9 @@ public class Game {
     }
 
     /**
-     * game start (main game function)
+     * game start (main game function).
      *
-     * @param numOfRoundsFlag int
+     * @param numOfRoundsFlag int.
      */
     public void gameStart(int numOfRoundsFlag) {
         int round = 1;

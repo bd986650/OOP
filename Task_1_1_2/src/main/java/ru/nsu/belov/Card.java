@@ -1,17 +1,17 @@
 package ru.nsu.belov;
 
 /**
- * Card
+ * Card.
  */
 public class Card {
     Suit suit;
     Rank rank;
 
     /**
-     * Card
+     * Card.
      *
-     * @param suit int
-     * @param rank int
+     * @param suit int.
+     * @param rank int.
      */
     public Card(int suit, int rank) {
         this.suit = Suit.values()[suit % 4];
@@ -19,10 +19,10 @@ public class Card {
     }
 
     /**
-     * Point System
+     * Point System.
      *
-     * @param moreThan21 boolean
-     * @return int
+     * @param moreThan21 boolean.
+     * @return int.
      */
     public int pointSystem(boolean moreThan21) {
         int countPointsByCard = rank.ordinal() + 1;
@@ -41,7 +41,7 @@ public class Card {
     }
 
     /**
-     * to String method
+     * to String method.
      */
     @Override
     public String toString() {
@@ -50,14 +50,14 @@ public class Card {
     }
 
     /**
-     * Suit
+     * Suit.
      */
     public enum Suit {
         Spades, Clubs, Diamonds, Hearts
     }
 
     /**
-     * Rank
+     * Rank.
      */
     public enum Rank {
         Ace, Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten, Jack, Queen, King

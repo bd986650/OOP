@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
- * Dealer Test
+ * Dealer Test.
  */
 class DealerTest {
 
@@ -20,7 +20,7 @@ class DealerTest {
     private PrintStream originalOut;
 
     /**
-     * setup
+     * setup.
      */
     @BeforeEach
     void setUp() {
@@ -31,7 +31,7 @@ class DealerTest {
     }
 
     /**
-     * test show start hand
+     * test show start hand.
      */
     @Test
     void testShowStartHand() {
@@ -45,7 +45,7 @@ class DealerTest {
     }
 
     /**
-     * test dealer score
+     * test dealer score.
      */
     @Test
     void testDealerScore() {
@@ -57,7 +57,7 @@ class DealerTest {
     }
 
     /**
-     * tear down
+     * tear down.
      */
     @AfterEach
     void tearDown() {

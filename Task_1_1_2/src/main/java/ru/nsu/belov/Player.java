@@ -4,16 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Player
+ * Player.
  */
 public class Player {
     protected List<Card> hand;
     protected String name;
 
     /**
-     * Player
+     * Player.
      *
-     * @param name string
+     * @param name string.
      */
     public Player(String name) {
         this.name = name;
@@ -21,18 +21,18 @@ public class Player {
     }
 
     /**
-     * add card
+     * add card.
      *
-     * @param card card
+     * @param card card.
      */
     public void addCard(Card card) {
         hand.add(card);
     }
 
     /**
-     * get point for player
+     * get point for player.
      *
-     * @return int
+     * @return int.
      */
     public int getPointForPlayer() {
         int score = 0;
@@ -52,25 +52,25 @@ public class Player {
     }
 
     /**
-     * print card from hand
+     * print card from hand.
      */
     public void printHand() {
         System.out.println("    Your cards: " + hand + " => " + getPointForPlayer());
     }
 
     /**
-     * is loser
+     * is loser.
      *
-     * @return boolean
+     * @return boolean.
      */
     public boolean isLoser() {
         return getPointForPlayer() > 21;
     }
 
     /**
-     * is blackjack
+     * is blackjack.
      *
-     * @return boolean
+     * @return boolean.
      */
     public boolean isBlackjack() {
         return getPointForPlayer() == 21 && hand.size() == 2;

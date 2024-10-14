@@ -4,20 +4,20 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 /**
- * Deck
+ * Deck.
  */
 public class Deck {
     ArrayList<Card> cards = new ArrayList<>();
 
     /**
-     * Deck
+     * Deck.
      */
     public Deck() {
         createDeck();
     }
 
     /**
-     * create deck
+     * create deck.
      */
     private void createDeck() {
         cards.clear();
@@ -30,16 +30,16 @@ public class Deck {
     }
 
     /**
-     * shuffle
+     * shuffle.
      */
     private void shuffle() {
         Collections.shuffle(cards);
     }
 
     /**
-     * get card from deck
+     * get card from deck.
      *
-     * @return Card
+     * @return Card.
      */
     public Card getCardFromDeck() {
         if (cards.isEmpty()) {

@@ -8,13 +8,13 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
 /**
- * Player Test
+ * Player Test.
  */
 class PlayerTest {
     public Player player;
 
     /**
-     * setup
+     * setup.
      */
     @BeforeEach
     void setUp() {
@@ -22,7 +22,7 @@ class PlayerTest {
     }
 
     /**
-     * test add card
+     * test add card.
      */
     @Test
     void testAddCard() {
@@ -33,7 +33,7 @@ class PlayerTest {
     }
 
     /**
-     * test get score without aces
+     * test get score without aces.
      */
     @Test
     void testGetScoreWithoutAces() {
@@ -43,7 +43,7 @@ class PlayerTest {
     }
 
     /**
-     * test get score with ace
+     * test get score with ace.
      */
     @Test
     void testGetScoreWithAce() {
@@ -53,7 +53,7 @@ class PlayerTest {
     }
 
     /**
-     * test get score with ace as one
+     * test get score with ace as one.
      */
     @Test
     void testGetScoreWithAceAsOne() {
@@ -64,7 +64,7 @@ class PlayerTest {
     }
 
     /**
-     * test is loser
+     * test is loser.
      */
     @Test
     void testIsLoser() {
@@ -75,7 +75,7 @@ class PlayerTest {
     }
 
     /**
-     * test has blackjack
+     * test has blackjack.
      */
     @Test
     void testHasBlackjack() {
@@ -85,7 +85,7 @@ class PlayerTest {
     }
 
     /**
-     * test not blackjack with more than two cards
+     * test not blackjack with more than two cards.
      */
     @Test
     void testNotBlackjackWithMoreThanTwoCards() {

@@ -9,14 +9,14 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
- * Deck Test
+ * Deck Test.
  */
 public class DeckTest {
 
     public Deck deck;
 
     /**
-     * setup
+     * setup.
      */
     @BeforeEach
     void setUp() {
@@ -24,7 +24,7 @@ public class DeckTest {
     }
 
     /**
-     * test deck has 52 cards
+     * test deck has 52 cards.
      */
     @Test
     void testDeckHas52Cards() {
@@ -32,7 +32,7 @@ public class DeckTest {
     }
 
     /**
-     * test deck contains all unique cards
+     * test deck contains all unique cards.
      */
     @Test
     void testDeckContainsAllUniqueCards() {
@@ -41,7 +41,7 @@ public class DeckTest {
     }
 
     /**
-     * test get card from deck reduces size
+     * test get card from deck reduces size.
      */
     @Test
     void testGetCardFromDeckReducesSize() {
@@ -51,7 +51,7 @@ public class DeckTest {
     }
 
     /**
-     * test desk is empty after all cards are dawn
+     * test desk is empty after all cards are dawn.
      */
     @Test
     void testDeckIsEmptyAfterAllCardsAreDrawn() {
