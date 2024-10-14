@@ -38,12 +38,13 @@ public class Deck {
 
     /**
      * get card from deck
+     *
      * @return Card
      */
     public Card getCardFromDeck() {
         if (cards.isEmpty()) {
             createDeck();
         }
-        return cards.remove(cards.size()-1);
+        return cards.remove(cards.size() - 1);
     }
 }

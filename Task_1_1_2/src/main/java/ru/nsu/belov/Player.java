@@ -12,7 +12,8 @@ public class Player {
 
     /**
      * Player
-     * @param name
+     *
+     * @param name string
      */
     public Player(String name) {
         this.name = name;
@@ -21,7 +22,8 @@ public class Player {
 
     /**
      * add card
-     * @param card
+     *
+     * @param card card
      */
     public void addCard(Card card) {
         hand.add(card);
@@ -29,7 +31,8 @@ public class Player {
 
     /**
      * get point for player
-     * @return
+     *
+     * @return int
      */
     public int getPointForPlayer() {
         int score = 0;
@@ -57,7 +60,8 @@ public class Player {
 
     /**
      * is loser
-     * @return
+     *
+     * @return boolean
      */
     public boolean isLoser() {
         return getPointForPlayer() > 21;
@@ -65,7 +69,8 @@ public class Player {
 
     /**
      * is blackjack
-     * @return
+     *
+     * @return boolean
      */
     public boolean isBlackjack() {
         return getPointForPlayer() == 21 && hand.size() == 2;
@@ -87,13 +92,13 @@ class Dealer extends Player {
      * show start hand
      */
     public void showStartHand() {
-        System.out.println("    Dealer's cards: " + "["+hand.get(0) + ", <closed card>"+"]");
+        System.out.println("    Dealer's cards: " + "[" + hand.get(0) + ", <closed card>" + "]");
     }
 
     /**
      * print hand for dealer
      */
-    public void printHand(){
+    public void printHand() {
         System.out.println("    Dealer's cards: " + hand + " => " + getPointForPlayer());
     }
 }

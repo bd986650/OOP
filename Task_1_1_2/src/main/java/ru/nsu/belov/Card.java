@@ -4,40 +4,12 @@ package ru.nsu.belov;
  * Card
  */
 public class Card {
-    /**
-     * Suit
-     */
-    public enum Suit {
-        Spades,
-        Clubs,
-        Diamonds,
-        Hearts
-    }
-
-    /**
-     * Rank
-     */
-    public enum Rank {
-        Ace,
-        Two,
-        Three,
-        Four,
-        Five,
-        Six,
-        Seven,
-        Eight,
-        Nine,
-        Ten,
-        Jack,
-        Queen,
-        King
-    }
-
     Suit suit;
     Rank rank;
 
     /**
      * Card
+     *
      * @param suit int
      * @param rank int
      */
@@ -48,11 +20,12 @@ public class Card {
 
     /**
      * Point System
+     *
      * @param moreThan21 boolean
      * @return int
      */
     public int pointSystem(boolean moreThan21) {
-        int countPointsByCard = rank.ordinal()+1;
+        int countPointsByCard = rank.ordinal() + 1;
 
         if ((2 <= countPointsByCard) && (countPointsByCard <= 10)) {
             return countPointsByCard;
@@ -72,7 +45,21 @@ public class Card {
      */
     @Override
     public String toString() {
-        int countPointsByCard = rank.ordinal()+1;
-        return rank+" of "+suit+" "+"("+countPointsByCard+")";
+        int countPointsByCard = rank.ordinal() + 1;
+        return rank + " of " + suit + " " + "(" + countPointsByCard + ")";
+    }
+
+    /**
+     * Suit
+     */
+    public enum Suit {
+        Spades, Clubs, Diamonds, Hearts
+    }
+
+    /**
+     * Rank
+     */
+    public enum Rank {
+        Ace, Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten, Jack, Queen, King
     }
 }

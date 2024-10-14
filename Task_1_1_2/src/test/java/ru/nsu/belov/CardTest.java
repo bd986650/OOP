@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class CardTest {
     @Test
     /**
-     * points system
+     * void points system test
      */
     void pointsSystemTest() {
         Card card;
@@ -39,9 +39,10 @@ class CardTest {
 
     /**
      * calculate points
-     * @param rank
-     * @param moreThan21
-     * @return
+     *
+     * @param rank card
+     * @param moreThan21 boolean
+     * @return int
      */
     private int calculateExpectedPoints(Card.Rank rank, boolean moreThan21) {
         int rankValue = rank.ordinal() + 1;
