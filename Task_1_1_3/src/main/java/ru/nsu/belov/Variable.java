@@ -10,6 +10,7 @@ class Variable extends Expression {
 
     /**
      * variable constructor
+     *
      * @param name string
      */
     public Variable(String name) {
@@ -18,6 +19,7 @@ class Variable extends Expression {
 
     /**
      * print
+     *
      * @return string
      */
     @Override
@@ -27,7 +29,9 @@ class Variable extends Expression {
 
     /**
      * eval
+     *
      * @param variables integer
+     *
      * @return int
      */
     @Override
@@ -41,7 +45,9 @@ class Variable extends Expression {
 
     /**
      * derivative
+     *
      * @param variable string
+     *
      * @return Expression
      */
     @Override

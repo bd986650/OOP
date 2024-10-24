@@ -11,6 +11,7 @@ class Sub extends Expression {
 
     /**
      * sub
+     *
      * @param left expr
      * @param right expr
      */
@@ -21,6 +22,7 @@ class Sub extends Expression {
 
     /**
      * print
+     *
      * @return string
      */
     @Override
@@ -30,7 +32,9 @@ class Sub extends Expression {
 
     /**
      * eval
+     *
      * @param variables integer
+     *
      * @return int
      */
     @Override
@@ -40,7 +44,9 @@ class Sub extends Expression {
 
     /**
      * derivative
+     *
      * @param variable string
+     *
      * @return expression
      */
     @Override

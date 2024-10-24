@@ -10,6 +10,7 @@ public class Add extends Expression {
 
     /**
      * add
+     *
      * @param left Expr
      * @param right Expr
      */
@@ -20,6 +21,7 @@ public class Add extends Expression {
 
     /**
      * print
+     *
      * @return string
      */
     @Override
@@ -29,7 +31,9 @@ public class Add extends Expression {
 
     /**
      * eval
+     *
      * @param variables integer
+     *
      * @return int
      */
     @Override
@@ -39,7 +43,9 @@ public class Add extends Expression {
 
     /**
      * derivative
+     *
      * @param variable string
+     *
      * @return expression
      */
     @Override

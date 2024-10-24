@@ -10,6 +10,7 @@ public class Mul extends Expression {
 
     /**
      * Mul
+     *
      * @param left expr
      * @param right expr
      */
@@ -20,6 +21,7 @@ public class Mul extends Expression {
 
     /**
      * print
+     *
      * @return string
      */
     @Override
@@ -29,7 +31,9 @@ public class Mul extends Expression {
 
     /**
      * eval
+     *
      * @param variables integer
+     *
      * @return int
      */
     @Override
@@ -39,7 +43,9 @@ public class Mul extends Expression {
 
     /**
      * derivative
+     *
      * @param variable string
+     *
      * @return expr
      */
     @Override

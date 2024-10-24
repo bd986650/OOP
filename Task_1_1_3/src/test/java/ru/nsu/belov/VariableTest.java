@@ -7,13 +7,22 @@ import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * test var
+ */
 class VariableTest {
+    /**
+     * test print
+     */
     @Test
     public void testPrint() {
         Expression var = new Variable("x");
         assertEquals("x", var.print());
     }
 
+    /**
+     * test eval
+     */
     @Test
     public void testEval() {
         Expression var = new Variable("x");
@@ -22,6 +31,9 @@ class VariableTest {
         assertEquals(10, var.eval(vars));
     }
 
+    /**
+     * test deriv
+     */
     @Test
     public void testDerivative() {
         Expression var = new Variable("x");

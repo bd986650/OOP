@@ -10,6 +10,7 @@ class Div extends Expression {
 
     /**
      * div
+     *
      * @param left expr
      * @param right expr
      */
@@ -20,6 +21,7 @@ class Div extends Expression {
 
     /**
      * print
+     *
      * @return string
      */
     @Override
@@ -29,7 +31,9 @@ class Div extends Expression {
 
     /**
      * eval
+     *
      * @param variables integer
+     *
      * @return int
      */
     @Override
@@ -39,7 +43,9 @@ class Div extends Expression {
 
     /**
      * derivative
+     *
      * @param variable string
+     *
      * @return expr
      */
     @Override

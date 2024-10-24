@@ -10,6 +10,7 @@ class Number extends Expression {
 
     /**
      * number constructor
+     *
      * @param value int
      */
     public Number(int value) {
@@ -18,6 +19,7 @@ class Number extends Expression {
 
     /**
      * print
+     *
      * @return string
      */
     @Override
@@ -27,7 +29,9 @@ class Number extends Expression {
 
     /**
      * eval
+     *
      * @param variables integer
+     *
      * @return int
      */
     @Override
@@ -37,7 +41,9 @@ class Number extends Expression {
 
     /**
      * derivative
+     *
      * @param variable string
+     *
      * @return Expression
      */
     @Override
