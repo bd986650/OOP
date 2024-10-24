@@ -3,38 +3,41 @@ package ru.nsu.belov;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * expr.
+ */
 public abstract class Expression {
     /**
-     * Вывод выражения в виде строки
+     * Вывод выражения в виде строки.
      *
-     * @return string
+     * @return string.
      */
     public abstract String print();
 
     /**
-     * Вычисление выражения при заданных значениях переменных
+     * Вычисление выражения при заданных значениях переменных.
      *
-     * @param variables integer
+     * @param variables integer.
      *
-     * @return int
+     * @return int.
      */
     public abstract int eval(Map<String, Integer> variables);
 
     /**
-     * Дифференцирование по заданной переменной
+     * Дифференцирование по заданной переменной.
      *
-     * @param variable string
+     * @param variable string.
      *
-     * @return Expression
+     * @return Expression.
      */
     public abstract Expression derivative(String variable);
 
     /**
-     * eval
+     * eval.
      *
-     * @param vars string
+     * @param vars string.
      *
-     * @return int
+     * @return int.
      */
     public int eval(String vars) {
         Map<String, Integer> variables = new HashMap<>();

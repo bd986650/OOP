@@ -3,24 +3,24 @@ package ru.nsu.belov;
 import java.util.Map;
 
 /**
- * class Number
+ * class Number.
  */
 class Number extends Expression {
     private final int value;
 
     /**
-     * number constructor
+     * number constructor.
      *
-     * @param value int
+     * @param value int.
      */
     public Number(int value) {
         this.value = value;
     }
 
     /**
-     * print
+     * print.
      *
-     * @return string
+     * @return string.
      */
     @Override
     public String print() {
@@ -28,11 +28,11 @@ class Number extends Expression {
     }
 
     /**
-     * eval
+     * eval.
      *
-     * @param variables integer
+     * @param variables integer.
      *
-     * @return int
+     * @return int.
      */
     @Override
     public int eval(Map<String, Integer> variables) {
@@ -40,11 +40,11 @@ class Number extends Expression {
     }
 
     /**
-     * derivative
+     * derivative.
      *
-     * @param variable string
+     * @param variable string.
      *
-     * @return Expression
+     * @return Expression.
      */
     @Override
     public Expression derivative(String variable) {

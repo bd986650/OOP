@@ -7,11 +7,11 @@ import java.util.HashMap;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * test number
+ * test number.
  */
 class NumberTest {
     /**
-     * test print
+     * test print.
      */
     @Test
     public void testPrint() {
@@ -20,7 +20,7 @@ class NumberTest {
     }
 
     /**
-     * test eval
+     * test eval.
      */
     @Test
     public void testEval() {
@@ -29,7 +29,7 @@ class NumberTest {
     }
 
     /**
-     * test deriv
+     * test deriv.
      */
     @Test
     public void testDerivative() {

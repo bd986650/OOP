@@ -8,11 +8,11 @@ import java.util.Map;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * div test
+ * div test.
  */
 class DivTest {
     /**
-     * test print
+     * test print.
      */
     @Test
     public void testPrint() {
@@ -21,7 +21,7 @@ class DivTest {
     }
 
     /**
-     * test eval
+     * test eval.
      */
     @Test
     public void testEval() {
@@ -32,7 +32,7 @@ class DivTest {
     }
 
     /**
-     * test deriv
+     * test deriv.
      */
     @Test
     public void testDerivative() {

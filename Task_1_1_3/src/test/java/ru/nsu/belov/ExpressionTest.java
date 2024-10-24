@@ -5,11 +5,11 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * test eval
+ * test eval.
  */
 class ExpressionTest {
     /**
-     * test eval
+     * test eval.
      */
     @Test
     public void testEvalWithStringVariables() {
@@ -18,7 +18,7 @@ class ExpressionTest {
     }
 
     /**
-     * test eval
+     * test eval.
      */
     @Test
     public void testEvalWithMultipleVariables() {

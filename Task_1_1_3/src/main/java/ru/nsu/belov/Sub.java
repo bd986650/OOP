@@ -3,7 +3,7 @@ package ru.nsu.belov;
 import java.util.Map;
 
 /**
- * sub
+ * sub.
  */
 class Sub extends Expression {
     private final Expression left;
@@ -12,8 +12,8 @@ class Sub extends Expression {
     /**
      * sub
      *
-     * @param left expr
-     * @param right expr
+     * @param left expr.
+     * @param right expr.
      */
     public Sub(Expression left, Expression right) {
         this.left = left;
@@ -21,9 +21,9 @@ class Sub extends Expression {
     }
 
     /**
-     * print
+     * print.
      *
-     * @return string
+     * @return string.
      */
     @Override
     public String print() {
@@ -31,11 +31,11 @@ class Sub extends Expression {
     }
 
     /**
-     * eval
+     * eval.
      *
-     * @param variables integer
+     * @param variables integer.
      *
-     * @return int
+     * @return int.
      */
     @Override
     public int eval(Map<String, Integer> variables) {
@@ -43,11 +43,11 @@ class Sub extends Expression {
     }
 
     /**
-     * derivative
+     * derivative.
      *
-     * @param variable string
+     * @param variable string.
      *
-     * @return expression
+     * @return expression.
      */
     @Override
     public Expression derivative(String variable) {

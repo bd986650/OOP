@@ -3,16 +3,16 @@ package ru.nsu.belov;
 import java.util.Map;
 
 /**
- * div
+ * div.
  */
 class Div extends Expression {
     final private Expression left, right;
 
     /**
-     * div
+     * div.
      *
-     * @param left expr
-     * @param right expr
+     * @param left expr.
+     * @param right expr.
      */
     public Div(Expression left, Expression right) {
         this.left = left;
@@ -20,9 +20,9 @@ class Div extends Expression {
     }
 
     /**
-     * print
+     * print.
      *
-     * @return string
+     * @return string.
      */
     @Override
     public String print() {
@@ -30,11 +30,11 @@ class Div extends Expression {
     }
 
     /**
-     * eval
+     * eval.
      *
-     * @param variables integer
+     * @param variables integer.
      *
-     * @return int
+     * @return int.
      */
     @Override
     public int eval(Map<String, Integer> variables) {
@@ -42,11 +42,11 @@ class Div extends Expression {
     }
 
     /**
-     * derivative
+     * derivative.
      *
-     * @param variable string
+     * @param variable string.
      *
-     * @return expr
+     * @return expr.
      */
     @Override
     public Expression derivative(String variable) {
