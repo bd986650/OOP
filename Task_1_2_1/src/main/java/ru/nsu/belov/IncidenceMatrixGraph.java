@@ -52,9 +52,23 @@ public class IncidenceMatrixGraph implements Graph {
     @Override
     public void removeVertex(int vertex) {
         if (vertex >= vertexCount) return;
+
         for (int i = 0; i < edgeCount; i++) {
-            incidenceMatrix[vertex][i] = 0;
+            if (incidenceMatrix[vertex][i] != 0) {
+                for (int j = 0; j < vertexCount; j++) {
+                    incidenceMatrix[j][i] = 0;
+                }
+            }
         }
+
+        int[][] newMatrix = new int[vertexCount - 1][edgeCount];
+        for (int i = 0, newRow = 0; i < vertexCount; i++) {
+            if (i != vertex) {
+                newMatrix[newRow++] = incidenceMatrix[i];
+            }
+        }
+        incidenceMatrix = newMatrix;
+        vertexCount--;
     }
 
     /**

@@ -28,6 +28,23 @@ class AdjacencyListGraphTest {
     }
 
     /**
+     * remove vertex test.
+     */
+    @Test
+    public void testRemoveVertex() {
+        AdjacencyListGraph graph = new AdjacencyListGraph();
+        graph.addVertex(0);
+        graph.addVertex(1);
+        graph.addVertex(2);
+        graph.addEdge(0, 1);
+        graph.addEdge(1, 2);
+
+        graph.removeVertex(1);
+
+        assertFalse(graph.getNeighbors(1).contains(0));
+    }
+
+    /**
      * add edge test.
      */
     @Test

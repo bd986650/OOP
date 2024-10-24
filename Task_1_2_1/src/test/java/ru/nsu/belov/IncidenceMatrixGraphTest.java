@@ -31,6 +31,28 @@ class IncidenceMatrixGraphTest {
     }
 
     /**
+     * remove vertex test.
+     */
+    @Test
+    public void testRemoveVertex() {
+        IncidenceMatrixGraph graph = new IncidenceMatrixGraph(4, 4);
+        graph.addEdge(0, 1);
+        graph.addEdge(1, 2);
+        graph.addEdge(2, 3);
+        graph.addEdge(0, 2);
+
+        List<Integer> neighbors1 = graph.getNeighbors(1);
+        assertTrue(neighbors1.contains(0));
+        assertTrue(neighbors1.contains(2));
+
+        // Удаляем вершину 1
+        graph.removeVertex(1);
+
+        List<Integer> neighbors2 = graph.getNeighbors(2);
+        assertFalse(neighbors2.contains(1));
+    }
+
+    /**
      * add edge test.
      */
     @Test

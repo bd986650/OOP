@@ -9,7 +9,7 @@ import java.util.*;
  * Adjacency List Graph.
  */
 public class AdjacencyListGraph implements Graph {
-    private Map<Integer, List<Integer>> adjacencyList;
+    Map<Integer, List<Integer>> adjacencyList;
 
     /**
      * Constructor.
@@ -35,7 +35,14 @@ public class AdjacencyListGraph implements Graph {
      */
     @Override
     public void removeVertex(int vertex) {
-        adjacencyList.values().forEach(e -> e.remove(Integer.valueOf(vertex)));
+        if (!adjacencyList.containsKey(vertex)) return;
+
+        // Удаляем все рёбра, инцидентные удаляемой вершине
+        for (int neighbor : adjacencyList.get(vertex)) {
+            adjacencyList.get(neighbor).remove((Integer) vertex);
+        }
+
+        // Удаляем саму вершину
         adjacencyList.remove(vertex);
     }
 
@@ -47,9 +54,8 @@ public class AdjacencyListGraph implements Graph {
      */
     @Override
     public void addEdge(int from, int to) {
-        if (!adjacencyList.containsKey(from)) {
-            adjacencyList.put(from, new ArrayList<>());
-        }
+        addVertex(from);  // Убедитесь, что вершина `from` существует
+        addVertex(to);    // Убедитесь, что вершина `to` существует
         if (!adjacencyList.get(from).contains(to)) {
             adjacencyList.get(from).add(to);
         }
@@ -63,7 +69,10 @@ public class AdjacencyListGraph implements Graph {
      */
     @Override
     public void removeEdge(int vertex1, int vertex2) {
-        adjacencyList.get(vertex1).remove(Integer.valueOf(vertex2));
+        List<Integer> neighbors = adjacencyList.get(vertex1);
+        if (neighbors != null) {
+            neighbors.remove((Integer) vertex2);
+        }
     }
 
     /**
