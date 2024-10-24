@@ -6,7 +6,7 @@ import java.util.Map;
  * Var.
  */
 class Variable extends Expression {
-    private final String name;
+    final String name;
 
     /**
      * variable constructor.

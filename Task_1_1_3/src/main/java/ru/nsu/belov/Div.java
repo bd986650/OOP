@@ -6,7 +6,8 @@ import java.util.Map;
  * div.
  */
 class Div extends Expression {
-    final private Expression left, right;
+    final Expression left;
+    final Expression right;
 
     /**
      * div.

@@ -6,7 +6,7 @@ import java.util.Map;
  * class Number.
  */
 class Number extends Expression {
-    private final int value;
+    final int value;
 
     /**
      * number constructor.

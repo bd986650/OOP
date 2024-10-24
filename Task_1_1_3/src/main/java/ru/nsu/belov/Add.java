@@ -6,7 +6,8 @@ import java.util.Map;
  * add.
  */
 public class Add extends Expression {
-    final private Expression left, right;
+    final Expression left;
+    final Expression right;
 
     /**
      * add.
@@ -30,7 +31,7 @@ public class Add extends Expression {
     }
 
     /**
-     * eval
+     * eval.
      *
      * @param variables integer.
      *
@@ -42,7 +43,7 @@ public class Add extends Expression {
     }
 
     /**
-     * derivative
+     * derivative.
      *
      * @param variable string.
      *

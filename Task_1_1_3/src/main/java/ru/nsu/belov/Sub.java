@@ -6,13 +6,13 @@ import java.util.Map;
  * sub.
  */
 class Sub extends Expression {
-    private final Expression left;
-    private final Expression right;
+    final Expression left;
+    final Expression right;
 
     /**
-     * sub
+     * sub.
      *
-     * @param left expr.
+     * @param left  expr.
      * @param right expr.
      */
     public Sub(Expression left, Expression right) {

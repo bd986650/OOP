@@ -6,7 +6,8 @@ import java.util.Map;
  * Mul.
  */
 public class Mul extends Expression {
-    final private Expression left, right;
+    final Expression left;
+    final Expression right;
 
     /**
      * Mul.
