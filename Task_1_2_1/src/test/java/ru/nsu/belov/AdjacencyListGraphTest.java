@@ -42,6 +42,21 @@ class AdjacencyListGraphTest {
     }
 
     /**
+     * test adding edges between existing vertices.
+     */
+    @Test
+    public void testAddMultipleEdges() {
+        AdjacencyListGraph graph = new AdjacencyListGraph();
+        graph.addVertex(0);
+        graph.addVertex(1);
+        graph.addEdge(0, 1);
+        graph.addEdge(0, 1);
+
+        List<Integer> neighbors = graph.getNeighbors(0);
+        assertEquals(1, neighbors.size());
+    }
+
+    /**
      * remove edge test.
      */
     @Test
@@ -52,6 +67,19 @@ class AdjacencyListGraphTest {
         graph.addEdge(0, 1);
         graph.removeEdge(0, 1);
         assertFalse(graph.getNeighbors(0).contains(1));
+    }
+
+    /**
+     * test removing a non-existing edge.
+     */
+    @Test
+    public void testRemoveNonExistingEdge() {
+        AdjacencyListGraph graph = new AdjacencyListGraph();
+        graph.addVertex(0);
+        graph.addVertex(1);
+        graph.removeEdge(0, 1);
+
+        assertTrue(graph.getNeighbors(0).isEmpty());
     }
 
     /**

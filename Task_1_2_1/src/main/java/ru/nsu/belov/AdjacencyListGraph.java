@@ -42,12 +42,17 @@ public class AdjacencyListGraph implements Graph {
     /**
      * add edge.
      *
-     * @param vertex1 int.
-     * @param vertex2 int.
+     * @param from int.
+     * @param to int.
      */
     @Override
-    public void addEdge(int vertex1, int vertex2) {
-        adjacencyList.get(vertex1).add(vertex2);
+    public void addEdge(int from, int to) {
+        if (!adjacencyList.containsKey(from)) {
+            adjacencyList.put(from, new ArrayList<>());
+        }
+        if (!adjacencyList.get(from).contains(to)) {
+            adjacencyList.get(from).add(to);
+        }
     }
 
     /**

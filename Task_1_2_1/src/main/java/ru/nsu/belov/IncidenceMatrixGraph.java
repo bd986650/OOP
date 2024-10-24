@@ -68,11 +68,16 @@ public class IncidenceMatrixGraph implements Graph {
         if (edgeCount == 0) {
             return;
         }
+
         int edge = 0;
         for (; edge < edgeCount; edge++) {
             if (incidenceMatrix[vertex1][edge] == 0 && incidenceMatrix[vertex2][edge] == 0) {
                 incidenceMatrix[vertex1][edge] = 1;
-                incidenceMatrix[vertex2][edge] = -1;
+                if (vertex1 == vertex2) {
+                    incidenceMatrix[vertex2][edge] = 1;
+                } else {
+                    incidenceMatrix[vertex2][edge] = -1;
+                }
                 break;
             }
         }

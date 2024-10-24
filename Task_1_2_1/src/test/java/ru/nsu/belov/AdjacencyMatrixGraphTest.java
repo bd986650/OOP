@@ -31,6 +31,18 @@ class AdjacencyMatrixGraphTest {
     }
 
     /**
+     * test adding duplicate vertex.
+     */
+    @Test
+    public void testAddDuplicateVertex() {
+        AdjacencyMatrixGraph graph = new AdjacencyMatrixGraph(3);
+        graph.addVertex(1);
+        int initialVertexCount = graph.vertexCount;
+        graph.addVertex(1);
+        assertEquals(initialVertexCount, graph.vertexCount);
+    }
+
+    /**
      * add edge test.
      */
     @Test
@@ -52,6 +64,20 @@ class AdjacencyMatrixGraphTest {
         graph.removeEdge(0, 1);
         List<Integer> neighbors = graph.getNeighbors(0);
         assertFalse(neighbors.contains(1));
+    }
+
+    /**
+     * test removing vertex.
+     */
+    @Test
+    public void testRemoveVertex() {
+        AdjacencyMatrixGraph graph = new AdjacencyMatrixGraph(3);
+        graph.addEdge(0, 1);
+        graph.addEdge(1, 2);
+        graph.removeVertex(1);
+
+        assertFalse(graph.getNeighbors(0).contains(1));
+        assertFalse(graph.getNeighbors(1).contains(2));
     }
 
     /**
@@ -82,6 +108,18 @@ class AdjacencyMatrixGraphTest {
         graph2.addEdge(0, 1);
 
         assertTrue(graph1.equals(graph2));
+    }
+
+    /**
+     * test self-loop.
+     */
+    @Test
+    public void testSelfLoop() {
+        AdjacencyMatrixGraph graph = new AdjacencyMatrixGraph(3);
+        graph.addEdge(1, 1);
+
+        List<Integer> neighbors = graph.getNeighbors(1);
+        assertTrue(neighbors.contains(1));
     }
 
     /**
