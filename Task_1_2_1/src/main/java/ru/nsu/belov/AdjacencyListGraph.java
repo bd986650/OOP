@@ -38,7 +38,10 @@ public class AdjacencyListGraph implements Graph {
      */
     @Override
     public void removeVertex(int vertex) {
-        if (!adjacencyList.containsKey(vertex)) return;
+        if (!adjacencyList.containsKey(vertex)) {
+            return;
+        }
+
 
         // Удаляем все рёбра, инцидентные удаляемой вершине
         for (int neighbor : adjacencyList.get(vertex)) {
