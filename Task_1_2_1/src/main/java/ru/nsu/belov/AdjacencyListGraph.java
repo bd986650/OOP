@@ -3,7 +3,10 @@ package ru.nsu.belov;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Adjacency List Graph.
@@ -50,7 +53,7 @@ public class AdjacencyListGraph implements Graph {
      * add edge.
      *
      * @param from int.
-     * @param to int.
+     * @param to   int.
      */
     @Override
     public void addEdge(int from, int to) {
@@ -166,11 +169,12 @@ public class AdjacencyListGraph implements Graph {
     /**
      * helper.
      *
-     * @param vertex int.
+     * @param vertex  int.
      * @param visited map integer , boolean.
-     * @param result list integer.
+     * @param result  list integer.
      */
-    private void topologicalSortUtil(Integer vertex, Map<Integer, Boolean> visited, List<Integer> result) {
+    private void topologicalSortUtil(Integer vertex, Map<Integer,
+            Boolean> visited, List<Integer> result) {
         visited.put(vertex, true);
 
         for (Integer neighbor : adjacencyList.get(vertex)) {

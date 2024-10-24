@@ -51,7 +51,9 @@ public class IncidenceMatrixGraph implements Graph {
      */
     @Override
     public void removeVertex(int vertex) {
-        if (vertex >= vertexCount) return;
+        if (vertex >= vertexCount) {
+            return;
+        }
 
         for (int i = 0; i < edgeCount; i++) {
             if (incidenceMatrix[vertex][i] != 0) {

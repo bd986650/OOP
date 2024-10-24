@@ -45,7 +45,6 @@ class IncidenceMatrixGraphTest {
         assertTrue(neighbors1.contains(0));
         assertTrue(neighbors1.contains(2));
 
-        // Удаляем вершину 1
         graph.removeVertex(1);
 
         List<Integer> neighbors2 = graph.getNeighbors(2);
