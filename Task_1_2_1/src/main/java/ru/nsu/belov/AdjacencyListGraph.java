@@ -8,96 +8,53 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Adjacency List Graph.
- */
 public class AdjacencyListGraph implements Graph {
     Map<Integer, List<Integer>> adjacencyList;
 
-    /**
-     * Constructor.
-     */
     public AdjacencyListGraph() {
         this.adjacencyList = new HashMap<>();
     }
 
-    /**
-     * add vertex.
-     *
-     * @param vertex int.
-     */
     @Override
-    public void addVertex(int vertex) {
+    public void addVertex(Integer vertex) {
         adjacencyList.putIfAbsent(vertex, new ArrayList<>());
     }
 
-    /**
-     * remove vertex.
-     *
-     * @param vertex int.
-     */
     @Override
-    public void removeVertex(int vertex) {
+    public void removeVertex(Integer vertex) {
         if (!adjacencyList.containsKey(vertex)) {
             return;
         }
 
-
-        // Удаляем все рёбра, инцидентные удаляемой вершине
         for (int neighbor : adjacencyList.get(vertex)) {
             adjacencyList.get(neighbor).remove((Integer) vertex);
         }
 
-        // Удаляем саму вершину
         adjacencyList.remove(vertex);
     }
 
-    /**
-     * add edge.
-     *
-     * @param from int.
-     * @param to   int.
-     */
     @Override
-    public void addEdge(int from, int to) {
-        addVertex(from);  // Убедитесь, что вершина `from` существует
-        addVertex(to);    // Убедитесь, что вершина `to` существует
+    public void addEdge(Integer from, Integer to) {
+        addVertex(from);
+        addVertex(to);
         if (!adjacencyList.get(from).contains(to)) {
             adjacencyList.get(from).add(to);
         }
     }
 
-    /**
-     * remove edge.
-     *
-     * @param vertex1 int.
-     * @param vertex2 int.
-     */
     @Override
-    public void removeEdge(int vertex1, int vertex2) {
+    public void removeEdge(Integer vertex1, Integer vertex2) {
         List<Integer> neighbors = adjacencyList.get(vertex1);
         if (neighbors != null) {
             neighbors.remove((Integer) vertex2);
         }
     }
 
-    /**
-     * get neighbors.
-     *
-     * @param vertex int.
-     *
-     * @return list integer.
-     */
     @Override
-    public List<Integer> getNeighbors(int vertex) {
+    public List<Integer> getNeighbors(Integer vertex) {
         return adjacencyList.getOrDefault(vertex, new ArrayList<>());
     }
 
-    /**
-     * read from file.
-     *
-     * @param filename string.
-     */
     @Override
     public void readFromFile(String filename) {
         try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
@@ -112,15 +69,10 @@ public class AdjacencyListGraph implements Graph {
                 }
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException("Error reading file: " + filename, e);
         }
     }
 
-    /**
-     * to string.
-     *
-     * @return string.
-     */
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -130,13 +82,6 @@ public class AdjacencyListGraph implements Graph {
         return sb.toString();
     }
 
-    /**
-     * equals.
-     *
-     * @param obj object.
-     *
-     * @return boolean.
-     */
     @Override
     public boolean equals(Object obj) {
         if (!(obj instanceof AdjacencyListGraph)) {
@@ -146,11 +91,6 @@ public class AdjacencyListGraph implements Graph {
         return this.adjacencyList.equals(other.adjacencyList);
     }
 
-    /**
-     * top sort.
-     *
-     * @return list integer.
-     */
     @Override
     public List<Integer> topologicalSort() {
         List<Integer> result = new ArrayList<>();
@@ -169,13 +109,6 @@ public class AdjacencyListGraph implements Graph {
         return result;
     }
 
-    /**
-     * helper.
-     *
-     * @param vertex  int.
-     * @param visited map integer , boolean.
-     * @param result  list integer.
-     */
     private void topologicalSortUtil(Integer vertex, Map<Integer,
             Boolean> visited, List<Integer> result) {
         visited.put(vertex, true);
