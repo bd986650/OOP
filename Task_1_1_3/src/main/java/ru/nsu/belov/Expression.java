@@ -1,52 +1,17 @@
 package ru.nsu.belov;
 
-import java.util.HashMap;
 import java.util.Map;
 
-/**
- * expr.
- */
-public abstract class Expression {
-    /**
-     * Вывод выражения в виде строки.
-     *
-     * @return string.
-     */
-    public abstract String print();
+public interface Expression {
 
-    /**
-     * Вычисление выражения при заданных значениях переменных.
-     *
-     * @param variables integer.
-     *
-     * @return int.
-     */
-    public abstract int eval(Map<String, Integer> variables);
+    String print();
 
-    /**
-     * Дифференцирование по заданной переменной.
-     *
-     * @param variable string.
-     *
-     * @return Expression.
-     */
-    public abstract Expression derivative(String variable);
+    int eval(Map<String, Integer> variables);
 
-    /**
-     * eval.
-     *
-     * @param vars string.
-     *
-     * @return int.
-     */
-    public int eval(String vars) {
-        Map<String, Integer> variables = new HashMap<>();
-        String[] assignments = vars.split(";");
-        for (String assignment : assignments) {
-            String[] pair = assignment.split("=");
-            variables.put(pair[0].trim(), Integer.parseInt(pair[1].trim()));
-        }
+    Expression derivative(String variable);
+
+    default int eval(String vars) {
+        Map<String, Integer> variables = EvalUtils.parseVariables(vars);
         return eval(variables);
     }
-
 }
