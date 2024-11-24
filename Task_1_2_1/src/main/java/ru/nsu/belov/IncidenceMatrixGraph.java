@@ -6,33 +6,19 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Incidence Matrix Graph.
- */
 public class IncidenceMatrixGraph implements Graph {
     private int[][] incidenceMatrix;
     int vertexCount;
     private int edgeCount;
 
-    /**
-     * constructor.
-     *
-     * @param vertices int.
-     * @param edges int.
-     */
-    public IncidenceMatrixGraph(int vertices, int edges) {
+    public IncidenceMatrixGraph(Integer vertices, Integer edges) {
         this.vertexCount = vertices;
         this.edgeCount = edges;
         this.incidenceMatrix = new int[vertices][edges];
     }
 
-    /**
-     * add vertex.
-     *
-     * @param vertex int.
-     */
     @Override
-    public void addVertex(int vertex) {
+    public void addVertex(Integer vertex) {
         if (vertex >= vertexCount) {
             int newSize = vertex + 1;
             int[][] newMatrix = new int[newSize][edgeCount];
@@ -44,13 +30,8 @@ public class IncidenceMatrixGraph implements Graph {
         }
     }
 
-    /**
-     * remove vertex.
-     *
-     * @param vertex int.
-     */
     @Override
-    public void removeVertex(int vertex) {
+    public void removeVertex(Integer vertex) {
         if (vertex >= vertexCount) {
             return;
         }
@@ -73,14 +54,8 @@ public class IncidenceMatrixGraph implements Graph {
         vertexCount--;
     }
 
-    /**
-     * add edge.
-     *
-     * @param vertex1 int.
-     * @param vertex2 int.
-     */
     @Override
-    public void addEdge(int vertex1, int vertex2) {
+    public void addEdge(Integer vertex1, Integer vertex2) {
         if (edgeCount == 0) {
             return;
         }
@@ -99,14 +74,8 @@ public class IncidenceMatrixGraph implements Graph {
         }
     }
 
-    /**
-     * remove edge.
-     *
-     * @param vertex1 int.
-     * @param vertex2 int.
-     */
     @Override
-    public void removeEdge(int vertex1, int vertex2) {
+    public void removeEdge(Integer vertex1, Integer vertex2) {
         for (int i = 0; i < edgeCount; i++) {
             if ((incidenceMatrix[vertex1][i] == 1 && incidenceMatrix[vertex2][i] == -1)
                     || (incidenceMatrix[vertex1][i] == -1 && incidenceMatrix[vertex2][i] == 1)) {
@@ -117,15 +86,8 @@ public class IncidenceMatrixGraph implements Graph {
         }
     }
 
-    /**
-     * get neighbors.
-     *
-     * @param vertex int.
-     *
-     * @return list integer.
-     */
     @Override
-    public List<Integer> getNeighbors(int vertex) {
+    public List<Integer> getNeighbors(Integer vertex) {
         List<Integer> neighbors = new ArrayList<>();
         for (int i = 0; i < edgeCount; i++) {
             if (incidenceMatrix[vertex][i] == 1 || incidenceMatrix[vertex][i] == -1) {
@@ -139,11 +101,6 @@ public class IncidenceMatrixGraph implements Graph {
         return neighbors;
     }
 
-    /**
-     * read from file.
-     *
-     * @param filename string.
-     */
     @Override
     public void readFromFile(String filename) {
         try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
@@ -157,15 +114,10 @@ public class IncidenceMatrixGraph implements Graph {
                 edge++;
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException("Error reading file: " + filename, e);
         }
     }
 
-    /**
-     * to string.
-     *
-     * @return string.
-     */
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -179,13 +131,6 @@ public class IncidenceMatrixGraph implements Graph {
         return sb.toString();
     }
 
-    /**
-     * equals.
-     *
-     * @param obj object.
-     *
-     * @return boolean.
-     */
     @Override
     public boolean equals(Object obj) {
         if (!(obj instanceof IncidenceMatrixGraph)) {
@@ -200,11 +145,6 @@ public class IncidenceMatrixGraph implements Graph {
         return true;
     }
 
-    /**
-     * top sort.
-     *
-     * @return list integer.
-     */
     @Override
     public List<Integer> topologicalSort() {
         List<Integer> result = new ArrayList<>();
@@ -218,13 +158,6 @@ public class IncidenceMatrixGraph implements Graph {
         return result;
     }
 
-    /**
-     * helper.
-     *
-     * @param vertex int.
-     * @param visited boolean arr.
-     * @param result list integer.
-     */
     private void topologicalSortUtil(int vertex, boolean[] visited, List<Integer> result) {
         visited[vertex] = true;
 
