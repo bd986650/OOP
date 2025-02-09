@@ -1,0 +1,1 @@
+memberSearchIndex = [{"p":"ru.nsu.belov","c":"FindPrime","l":"FindPrime()","u":"%3Cinit%3E()"},{"p":"ru.nsu.belov","c":"FindPrime","l":"isPrime(int)"}];updateSearchResults();
