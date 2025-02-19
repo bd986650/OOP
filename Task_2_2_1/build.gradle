@@ -1,0 +1,29 @@
+plugins {
+    id 'java'
+    id 'jacoco'
+}
+
+group = 'ru.nsu.belov'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    implementation 'com.fasterxml.jackson.core:jackson-core:latest.release'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:latest.release'
+    implementation 'com.fasterxml.jackson.core:jackson-annotations:latest.release'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+jacocoTestReport {
+    reports {
+        xml.required = true
+    }
+}
