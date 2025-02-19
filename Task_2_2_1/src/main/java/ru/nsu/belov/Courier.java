@@ -1,47 +1,83 @@
 package ru.nsu.belov;
 
-import java.util.concurrent.TimeUnit;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Logger;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
+/**
+ * Class for a courier thread.
+ */
+public class Courier extends Thread {
+    private String name;
+    private Integer bagCapacity;
+    private Pizzeria pizzeria;
+    private static Logger log;
 
-public class Courier {
-    private final int id;
-    private final int capacity;
-
-    // Пустой конструктор для Jackson
-    public Courier() {
-        this.id = 0;  // Инициализация по умолчанию
-        this.capacity = 0;  // Инициализация по умолчанию
+    static {
+        System.setProperty("java.util.logging.SimpleFormatter.format",
+                "[%1$tT:%1$tL] [%4$-7s] %5$s %n");
+        log = Logger.getLogger(Pizzeria.class.getName());
     }
 
-    // Конструктор с аннотациями для Jackson
-    @JsonCreator
-    public Courier(@JsonProperty("id") int id, @JsonProperty("capacity") int capacity) {
-        this.id = id;
-        this.capacity = capacity;
+    /**
+     * Constructor.
+     *
+     * @param name courier's name
+     * @param bagCapacity the number of pizzas that the courier can put in his bag
+     */
+    public Courier(String name, Integer bagCapacity) {
+        this.name = name;
+        this.bagCapacity = bagCapacity;
     }
 
-    public int getId() {
-        return id;
+    /**
+     * Set a pizzeria.
+     *
+     * @param pizzeria pizzeria object
+     */
+    public void setPizzeria(Pizzeria pizzeria) {
+        this.pizzeria = pizzeria;
     }
 
-    public int getCapacity() {
-        return capacity;
-    }
-
-    public void work(Storage storage) {
-        while (true) {
-            int pizzasTaken = storage.takePizzas(capacity);
-            if (pizzasTaken == 0) continue; // Если нечего забирать, ждем
-
-            System.out.println("Курьер " + id + " забрал " + pizzasTaken + " пицц(ы) и доставляет...");
+    @Override
+    public void run() {
+        log.info("Курьер " +  this.name + " начал работу");
+        while (!isInterrupted()) {
+            int totalDeliveryTime = 0;
+            List<Order> pickedOrders = new ArrayList<>();
             try {
-                TimeUnit.MILLISECONDS.sleep(2000); // Симуляция доставки
+                int amountOfPickedPizzas = this.bagCapacity;
+                int count = pizzeria.forDelivery.size();
+                while (!pizzeria.isOpen.get()) {
+                    if (count < bagCapacity && (count != 0)) {
+                        amountOfPickedPizzas = count;
+                        break;
+                    }
+                    count = pizzeria.forDelivery.size();
+                }
+
+                for (int i = 0; i < amountOfPickedPizzas; i++) {
+                    Order order = pizzeria.forDelivery.get();
+                    pickedOrders.add(order);
+                    totalDeliveryTime += order.getDeliveryTime();
+                }
+
+                StringBuffer message = new StringBuffer("[");
+                for (int i = 0; i < pickedOrders.size(); i++) {
+                    message.append(pickedOrders.get(i).getId());
+                    if (i < (pickedOrders.size() - 1)) {
+                        message.append(" ");
+                    }
+                }
+                message.append("]");
+                log.info(message + " [был собран курьером " + this.name + "]");
+                Thread.sleep(totalDeliveryTime);
+                log.info(message + " [был доставлен курьером " + this.name + "]");
+                pizzeria.deliveredOrders.getAndAdd(pickedOrders.size());
             } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
+                log.info("Курьер " +  this.name + " закончил работу");
             }
-            System.out.println("Курьер " + id + " доставил заказ.");
         }
     }
+
 }

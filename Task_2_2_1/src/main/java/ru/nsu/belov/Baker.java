@@ -1,49 +1,60 @@
 package ru.nsu.belov;
 
-import java.util.concurrent.TimeUnit;
+import java.util.logging.Logger;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
+/**
+ * Class for a baker thread.
+ */
+public class Baker extends Thread {
+    private String name;
+    private Integer bakingTime;
+    private Pizzeria pizzeria;
+    private static Logger log;
 
-public class Baker {
-    private final int id;
-    private final int speed;
-
-    // Пустой конструктор для Jackson
-    public Baker() {
-        this.id = 0;   // Инициализация по умолчанию
-        this.speed = 0; // Инициализация по умолчанию
+    static {
+        System.setProperty("java.util.logging.SimpleFormatter.format",
+                "[%1$tT:%1$tL] [%4$-7s] %5$s %n");
+        log = Logger.getLogger(Pizzeria.class.getName());
     }
 
-    // Используем конструктор с аннотациями для десериализации
-    @JsonCreator
-    public Baker(@JsonProperty("id") int id, @JsonProperty("speed") int speed) {
-        this.id = id;
-        this.speed = speed;
+    /**
+     * Constructor.
+     *
+     * @param name baker's name
+     * @param bakingTime baking time for one pizza
+     */
+    public Baker(String name, Integer bakingTime) {
+        this.name = name;
+        this.bakingTime = bakingTime;
     }
 
-    public int getId() {
-        return id;
+    /**
+     * Set a pizzeria.
+     *
+     * @param pizzeria pizzeria object
+     */
+    public void setPizzeria(Pizzeria pizzeria) {
+        this.pizzeria = pizzeria;
     }
 
-    public int getSpeed() {
-        return speed;
-    }
-
-    public void work(OrderQueue orderQueue, Storage storage) {
-        while (true) {
-            Order order = orderQueue.getOrder();
-            if (order == null) break; // Выход из цикла, если заказы больше не принимаются
-
-            System.out.println("Пекарь " + id + " начал готовить заказ " + order.getId());
+    @Override
+    public void run() {
+        log.info("Пекарь " +  this.name + " начал работу");
+        while (!isInterrupted()) {
             try {
-                TimeUnit.MILLISECONDS.sleep(speed); // Симуляция готовки
+                Order order = pizzeria.forBaking.get();
+                log.info("[" + order.getId() + "]" + " [был взят курьером "
+                        + this.name + "]");
+                Thread.sleep(this.bakingTime);
+                log.info("[" + order.getId() + "]" + " [был закончен пекарем "
+                        + this.name + "]");
+                pizzeria.forDelivery.add(order);
+                log.info("[" + order.getId() + "]" + " [был положен пекарем "
+                        + this.name + " на склад]");
+                pizzeria.bakedOrders.getAndIncrement();
             } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
+                log.info("Пекарь " +  this.name + " закончил работу");
             }
-
-            System.out.println("Пекарь " + id + " приготовил заказ " + order.getId());
-            storage.putPizza(order);
         }
     }
 }
