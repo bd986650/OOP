@@ -1,5 +1,8 @@
 package ru.nsu.belov;
 
+/**
+ * Find prime number class
+ */
 public class FindPrime {
     public static boolean isPrime(int num) {
         if (num < 2) return false;

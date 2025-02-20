@@ -5,7 +5,8 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 class ParallelThread {
-    public static boolean hasNonPrimeParallelThreads(int[] numbers, int threadCount) throws InterruptedException {
+    public static boolean hasNonPrimeParallelThreads(int[] numbers, int threadCount)
+            throws InterruptedException {
         int chunkSize = (int) Math.ceil(numbers.length / (double) threadCount);
         List<Thread> threads = new CopyOnWriteArrayList<>();
         AtomicBoolean foundNotPrime = new AtomicBoolean(false);

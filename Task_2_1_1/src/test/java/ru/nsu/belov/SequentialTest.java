@@ -5,6 +5,9 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+/**
+ * sequential test
+ */
 class SequentialTest {
     private final int[] notPrimeArrayFirst = {1};
     private final int[] notPrimeArraySecond = {2, 5, 4};
