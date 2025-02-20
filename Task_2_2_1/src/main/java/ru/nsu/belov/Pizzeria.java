@@ -1,11 +1,10 @@
 package ru.nsu.belov;
 
-import java.util.logging.Logger;
-
 import java.util.ArrayDeque;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.logging.Logger;
 
 /**
  * Class for a pizzeria.
