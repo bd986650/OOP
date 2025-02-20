@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="70721cd7-4ad9-4ae7-bb1a-1e83564dc587" name="Changes" comment="" />
+    <list default="true" id="70721cd7-4ad9-4ae7-bb1a-1e83564dc587" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../Task_2_1_1/src/main/java/ru/nsu/belov/FindPrime.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Task_2_1_1/src/main/java/ru/nsu/belov/FindPrime.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -57,7 +59,7 @@
     "Gradle.PizzeriaTest.storageTestWithThreads.executor": "Run",
     "Gradle.Task_2_2_1 [:ru.nsu.belov.Main.main()].executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "Task__2__2__1",
+    "git-widget-placeholder": "Task__2__1__1",
     "kotlin-language-version-configured": "true",
     "settings.editor.selected.configurable": "configurable.group.editor"
   }

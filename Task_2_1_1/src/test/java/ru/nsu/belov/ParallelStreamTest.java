@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
- * parallel stream test
+ * Parallel stream test.
  */
 class ParallelStreamTest {
     private final int[] notPrimeArrayFirst = {1};

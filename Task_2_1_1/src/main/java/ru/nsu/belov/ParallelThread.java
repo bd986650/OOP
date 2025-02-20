@@ -4,6 +4,9 @@ import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
 
+/**
+ * Parallel thread class.
+ */
 class ParallelThread {
     public static boolean hasNonPrimeParallelThreads(int[] numbers, int threadCount)
             throws InterruptedException {

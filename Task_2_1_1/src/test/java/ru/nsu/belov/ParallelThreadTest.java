@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
- * parallel thread test
+ * Parallel thread test.
  */
 class ParallelThreadTest {
     private final int[] notPrimeArrayFirst = {1};

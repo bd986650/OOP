@@ -1,7 +1,7 @@
 package ru.nsu.belov;
 
 /**
- * sequential class
+ * Sequential class.
  */
 class Sequential {
     public static boolean hasNonPrimeSequential(int[] numbers) {

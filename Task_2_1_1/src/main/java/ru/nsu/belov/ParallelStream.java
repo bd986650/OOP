@@ -3,7 +3,7 @@ package ru.nsu.belov;
 import java.util.Arrays;
 
 /**
- * parallel stream
+ * Parallel stream.
  */
 class ParallelStream {
     public static boolean hasNonPrimeParallelStream(int[] numbers) {
