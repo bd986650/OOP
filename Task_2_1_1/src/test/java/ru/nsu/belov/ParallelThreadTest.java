@@ -36,7 +36,8 @@ class ParallelThreadTest {
             long startTime = System.currentTimeMillis();
             boolean result = ParallelThread.hasNonPrimeParallelThreads(largePrimeArray, numThreads);
             long endTime = System.currentTimeMillis();
-            System.out.println("Parallel execution with " + numThreads + " threads time (test): " + (endTime - startTime) + " ms");
+            System.out.println("Parallel execution with " + numThreads +
+                    " threads time (test): " + (endTime - startTime) + " ms");
 
             assertFalse(result);
             assertTrue(ParallelThread.hasNonPrimeParallelThreads(notPrimeArrayFirst, numThreads));
