@@ -26,7 +26,7 @@ public class PrimeUtil {
      * private constructor for git push review.
      */
     private PrimeUtil() {
-        throw new UnsupportedOperationException
-                ("This is a utility class and cannot be instantiated");
+        throw new UnsupportedOperationException(
+                "This is a utility class and cannot be instantiated");
     }
 }
