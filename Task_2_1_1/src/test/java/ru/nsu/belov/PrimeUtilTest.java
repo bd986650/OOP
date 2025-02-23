@@ -1,14 +1,13 @@
 package ru.nsu.belov;
 
-import org.junit.jupiter.api.Test;
-
 import java.lang.reflect.Constructor;
+import org.junit.jupiter.api.Test;
 import java.lang.reflect.InvocationTargetException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * Prime Util test for main function + private constructor
+ * Prime Util test for main function + private constructor.
  */
 class PrimeUtilTest {
 

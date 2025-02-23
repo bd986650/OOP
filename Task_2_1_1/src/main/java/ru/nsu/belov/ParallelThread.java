@@ -10,6 +10,13 @@ import java.util.List;
 public class ParallelThread {
     private static volatile boolean foundNotPrime = false;
 
+    /**
+     * Main func of this class.
+     * @param numbers array
+     * @param threadCount int
+     * @return boolean value
+     * @throws InterruptedException throws
+     */
     public static boolean hasNonPrimeParallelThreads(int[] numbers, int threadCount)
             throws InterruptedException {
         int chunkSize = (int) Math.ceil(numbers.length / (double) threadCount);
