@@ -31,7 +31,8 @@ class ParallelStreamTest {
         long startTime = System.currentTimeMillis();
         boolean result = ParallelStream.hasNonPrimeParallelStream(largePrimeArray);
         long endTime = System.currentTimeMillis();
-        System.out.println("Parallel execution with parallelStream time (test): " + (endTime - startTime) + " ms");
+        System.out.println("Parallel execution with parallelStream time (test): "
+                + (endTime - startTime) + " ms");
 
         assertFalse(result);
         assertTrue(ParallelStream.hasNonPrimeParallelStream(notPrimeArrayFirst));
