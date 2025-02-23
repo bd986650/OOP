@@ -1,1 +1,1 @@
-memberSearchIndex = [{"p":"ru.nsu.belov","c":"FindPrime","l":"FindPrime()","u":"%3Cinit%3E()"},{"p":"ru.nsu.belov","c":"FindPrime","l":"isPrime(int)"}];updateSearchResults();
+memberSearchIndex = [{"p":"ru.nsu.belov","c":"ParallelThread","l":"hasNonPrimeParallelThreads(int[], int)","u":"hasNonPrimeParallelThreads(int[],int)"},{"p":"ru.nsu.belov","c":"PrimeUtil","l":"isPrime(int)"},{"p":"ru.nsu.belov","c":"ParallelThread","l":"ParallelThread()","u":"%3Cinit%3E()"}];updateSearchResults();
