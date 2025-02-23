@@ -18,7 +18,7 @@ class ParallelThreadTest {
         int count = 0;
         int number = 2;
         while (count < size) {
-            if (FindPrime.isPrime(number)) {
+            if (PrimeUtil.isPrime(number)) {
                 primes[count] = number;
                 count++;
             }
@@ -36,7 +36,8 @@ class ParallelThreadTest {
             long startTime = System.currentTimeMillis();
             boolean result = ParallelThread.hasNonPrimeParallelThreads(largePrimeArray, numThreads);
             long endTime = System.currentTimeMillis();
-            System.out.println("Parallel execution with " + numThreads + " threads time (test): " + (endTime - startTime) + " ms");
+            System.out.println("Parallel execution with " + numThreads +
+                    " threads time (test): " + (endTime - startTime) + " ms");
 
             assertFalse(result);
             assertTrue(ParallelThread.hasNonPrimeParallelThreads(notPrimeArrayFirst, numThreads));

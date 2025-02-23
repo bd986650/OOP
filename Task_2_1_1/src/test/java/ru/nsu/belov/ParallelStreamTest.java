@@ -16,7 +16,7 @@ class ParallelStreamTest {
         int count = 0;
         int number = 2;
         while (count < size) {
-            if (FindPrime.isPrime(number)) {
+            if (PrimeUtil.isPrime(number)) {
                 primes[count] = number;
                 count++;
             }
