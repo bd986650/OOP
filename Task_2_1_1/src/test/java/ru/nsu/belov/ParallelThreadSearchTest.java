@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 /**
  * Parallel thread test.
  */
-class ParallelThreadTest {
+class ParallelThreadSearchTest {
     private final int[] notPrimeArrayFirst = {1};
     private final int[] notPrimeArraySecond = {2, 5, 4};
     private final int[] emptyArray = {};
@@ -34,15 +34,15 @@ class ParallelThreadTest {
 
         for (int numThreads : threadCounts) {
             long startTime = System.currentTimeMillis();
-            boolean result = ParallelThread.hasNonPrimeParallelThreads(largePrimeArray, numThreads);
+            boolean result = ParallelThreadSearch.allPrimes(largePrimeArray, numThreads);
             long endTime = System.currentTimeMillis();
             System.out.println("Parallel execution with " + numThreads
                     + " threads time (test): " + (endTime - startTime) + " ms");
 
             assertFalse(result);
-            assertTrue(ParallelThread.hasNonPrimeParallelThreads(notPrimeArrayFirst, numThreads));
-            assertTrue(ParallelThread.hasNonPrimeParallelThreads(notPrimeArraySecond, numThreads));
-            assertFalse(ParallelThread.hasNonPrimeParallelThreads(emptyArray, numThreads));
+            assertTrue(ParallelThreadSearch.allPrimes(notPrimeArrayFirst, numThreads));
+            assertTrue(ParallelThreadSearch.allPrimes(notPrimeArraySecond, numThreads));
+            assertFalse(ParallelThreadSearch.allPrimes(emptyArray, numThreads));
         }
     }
 }

@@ -22,9 +22,6 @@ public class PrimeUtil {
         return true;
     }
 
-    /**
-     * private constructor for git push review.
-     */
     private PrimeUtil() {
         throw new UnsupportedOperationException(
                 "This is a utility class and cannot be instantiated");

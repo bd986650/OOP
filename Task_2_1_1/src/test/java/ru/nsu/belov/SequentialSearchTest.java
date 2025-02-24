@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 /**
  * Sequential test.
  */
-class SequentialTest {
+class SequentialSearchTest {
     private final int[] notPrimeArrayFirst = {1};
     private final int[] notPrimeArraySecond = {2, 5, 4};
     private final int[] emptyArray = {};
@@ -31,13 +31,13 @@ class SequentialTest {
     void hasNonPrimeSequentialTest() {
         int[] largePrimeArray = generatePrimeArray(100000);
         long startTime = System.currentTimeMillis();
-        boolean result = Sequential.hasNonPrimeSequential(largePrimeArray);
+        boolean result = SequentialSearch.allPrimes(largePrimeArray);
         long endTime = System.currentTimeMillis();
         System.out.println("Sequential execution time (test): " + (endTime - startTime) + " ms");
 
         assertFalse(result);
-        assertTrue(Sequential.hasNonPrimeSequential(notPrimeArrayFirst));
-        assertTrue(Sequential.hasNonPrimeSequential(notPrimeArraySecond));
-        assertFalse(Sequential.hasNonPrimeSequential(emptyArray));
+        assertTrue(SequentialSearch.allPrimes(notPrimeArrayFirst));
+        assertTrue(SequentialSearch.allPrimes(notPrimeArraySecond));
+        assertFalse(SequentialSearch.allPrimes(emptyArray));
     }
 }
