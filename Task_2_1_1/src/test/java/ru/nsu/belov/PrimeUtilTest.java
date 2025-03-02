@@ -6,9 +6,6 @@ import java.lang.reflect.InvocationTargetException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-/**
- * Prime Util test for main function + private constructor.
- */
 class PrimeUtilTest {
 
     @Test
