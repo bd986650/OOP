@@ -32,9 +32,9 @@ class SequentialSearchTest {
         long endTime = System.currentTimeMillis();
         System.out.println("Sequential execution time (test): " + (endTime - startTime) + " ms");
 
-        assertFalse(result);
-        assertTrue(SequentialSearch.allPrimes(notPrimeArrayFirst));
-        assertTrue(SequentialSearch.allPrimes(notPrimeArraySecond));
-        assertFalse(SequentialSearch.allPrimes(emptyArray));
+        assertTrue(result);
+        assertFalse(SequentialSearch.allPrimes(notPrimeArrayFirst));
+        assertFalse(SequentialSearch.allPrimes(notPrimeArraySecond));
+        assertTrue(SequentialSearch.allPrimes(emptyArray));
     }
 }

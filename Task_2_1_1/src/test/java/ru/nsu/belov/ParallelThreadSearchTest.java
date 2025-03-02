@@ -36,10 +36,10 @@ class ParallelThreadSearchTest {
             System.out.println("Parallel execution with " + numThreads
                     + " threads time (test): " + (endTime - startTime) + " ms");
 
-            assertFalse(result);
-            assertTrue(ParallelThreadSearch.allPrimes(notPrimeArrayFirst, numThreads));
-            assertTrue(ParallelThreadSearch.allPrimes(notPrimeArraySecond, numThreads));
-            assertFalse(ParallelThreadSearch.allPrimes(emptyArray, numThreads));
+            assertTrue(result);
+            assertFalse(ParallelThreadSearch.allPrimes(notPrimeArrayFirst, numThreads));
+            assertFalse(ParallelThreadSearch.allPrimes(notPrimeArraySecond, numThreads));
+            assertTrue(ParallelThreadSearch.allPrimes(emptyArray, numThreads));
         }
     }
 }

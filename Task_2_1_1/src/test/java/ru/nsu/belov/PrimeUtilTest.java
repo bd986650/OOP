@@ -7,7 +7,6 @@ import java.lang.reflect.InvocationTargetException;
 import static org.junit.jupiter.api.Assertions.*;
 
 class PrimeUtilTest {
-
     @Test
     void isPrimeTest() {
         assertTrue(PrimeUtil.isPrime(7));

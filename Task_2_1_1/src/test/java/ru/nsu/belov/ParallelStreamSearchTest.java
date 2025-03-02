@@ -31,9 +31,9 @@ class ParallelStreamSearchTest {
         System.out.println("Parallel execution with parallelStream time (test): "
                 + (endTime - startTime) + " ms");
 
-        assertFalse(result);
-        assertTrue(ParallelStreamSearch.allPrimes(notPrimeArrayFirst));
-        assertTrue(ParallelStreamSearch.allPrimes(notPrimeArraySecond));
-        assertFalse(ParallelStreamSearch.allPrimes(emptyArray));
+        assertTrue(result);
+        assertFalse(ParallelStreamSearch.allPrimes(notPrimeArrayFirst));
+        assertFalse(ParallelStreamSearch.allPrimes(notPrimeArraySecond));
+        assertTrue(ParallelStreamSearch.allPrimes(emptyArray));
     }
 }
