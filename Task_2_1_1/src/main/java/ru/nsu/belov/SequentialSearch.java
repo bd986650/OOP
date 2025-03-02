@@ -1,8 +1,5 @@
 package ru.nsu.belov;
 
-/**
- * Sequential class.
- */
 class SequentialSearch {
     public static boolean allPrimes(int[] numbers) {
         for (int num : numbers) {
