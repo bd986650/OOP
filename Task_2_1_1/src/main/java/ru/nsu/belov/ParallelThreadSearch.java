@@ -3,19 +3,9 @@ package ru.nsu.belov;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Parallel thread class.
- */
 public class ParallelThreadSearch {
     private static volatile boolean allPrimes = false;
 
-    /**
-     * Main func of this class.
-     * @param numbers array
-     * @param threadCount int
-     * @return boolean value
-     * @throws InterruptedException throws
-     */
     public static boolean allPrimes(int[] numbers, int threadCount)
             throws InterruptedException {
         int chunkSize = (int) Math.ceil(numbers.length / (double) threadCount);
