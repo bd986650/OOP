@@ -3,9 +3,6 @@ package ru.nsu.belov;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-/**
- * Parallel stream test.
- */
 class ParallelStreamSearchTest {
     private final int[] notPrimeArrayFirst = {1};
     private final int[] notPrimeArraySecond = {2, 5, 4};
