@@ -1,5 +1,6 @@
 package ru.nsu.belov;
 
+import java.util.ArrayDeque;
 import java.util.Queue;
 
 /**
@@ -8,17 +9,15 @@ import java.util.Queue;
  * @param <T> type of parameter
  */
 public class SynchronizedQueue<T> {
-    private Queue<T> queue;
-    private Integer maxLen;
+    private final Queue<T> queue = new ArrayDeque<>();
+    private final Integer maxLen;
 
     /**
      * Constructor.
      *
-     * @param queue an un synchronized queue
      * @param maxLen maximum allowed queue length
      */
-    public SynchronizedQueue(Queue<T> queue, Integer maxLen) {
-        this.queue = queue;
+    public SynchronizedQueue(Integer maxLen) {
         this.maxLen = maxLen;
     }
 

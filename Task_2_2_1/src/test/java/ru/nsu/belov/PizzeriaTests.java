@@ -8,19 +8,19 @@ import org.junit.jupiter.api.Test;
 /**
  * Tests for Task_2_2_1.
  */
-public class Tests {
+public class PizzeriaTests {
     @Test
     void test() throws IOException, ParseException, InterruptedException {
         List<Order> orders = ReadFiles.ordersRead("src/test/resources/orders.json");
         Pizzeria pizzeria = ReadFiles.pizzeriaRead("src/test/resources/pizzeria.json");
-        var pizzeriaThread = new Thread(() -> {
+        Thread pizzeriaThread = new Thread(() -> {
             try {
-                pizzeria.workingDay();
+                pizzeria.work();
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
         });
-        var clientThread = new Thread(() -> {
+        Thread clientThread = new Thread(() -> {
             try {
                 new Client(pizzeria, orders);
             } catch (InterruptedException e) {

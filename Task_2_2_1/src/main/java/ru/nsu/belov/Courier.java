@@ -8,10 +8,10 @@ import java.util.logging.Logger;
  * Class for a courier thread.
  */
 public class Courier extends Thread {
-    private String name;
-    private Integer bagCapacity;
+    private final String name;
+    private final Integer bagCapacity;
     private Pizzeria pizzeria;
-    private static Logger log;
+    private static final Logger log;
 
     static {
         System.setProperty("java.util.logging.SimpleFormatter.format",
@@ -47,17 +47,17 @@ public class Courier extends Thread {
             List<Order> pickedOrders = new ArrayList<>();
             try {
                 int amountOfPickedPizzas = this.bagCapacity;
-                int count = pizzeria.forDelivery.size();
-                while (!pizzeria.isOpen.get()) {
+                int count = pizzeria.getOrderCountForDelivery();
+                while (!pizzeria.isOpen()) {
                     if (count < bagCapacity && (count != 0)) {
                         amountOfPickedPizzas = count;
                         break;
                     }
-                    count = pizzeria.forDelivery.size();
+                    count = pizzeria.getOrderCountForDelivery();
                 }
 
                 for (int i = 0; i < amountOfPickedPizzas; i++) {
-                    Order order = pizzeria.forDelivery.get();
+                    Order order = pizzeria.getOrderForDelivery();
                     pickedOrders.add(order);
                     totalDeliveryTime += order.getDeliveryTime();
                 }
@@ -73,7 +73,7 @@ public class Courier extends Thread {
                 log.info(message + " [был собран курьером " + this.name + "]");
                 Thread.sleep(totalDeliveryTime);
                 log.info(message + " [был доставлен курьером " + this.name + "]");
-                pizzeria.deliveredOrders.getAndAdd(pickedOrders.size());
+                pizzeria.increaseDeliveredOrders(pickedOrders.size());
             } catch (InterruptedException e) {
                 log.info("Курьер " +  this.name + " закончил работу");
             }

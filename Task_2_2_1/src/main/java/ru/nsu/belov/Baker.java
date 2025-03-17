@@ -6,10 +6,10 @@ import java.util.logging.Logger;
  * Class for a baker thread.
  */
 public class Baker extends Thread {
-    private String name;
-    private Integer bakingTime;
+    private final String name;
+    private final Integer bakingTime;
     private Pizzeria pizzeria;
-    private static Logger log;
+    private static final Logger log;
 
     static {
         System.setProperty("java.util.logging.SimpleFormatter.format",
@@ -42,16 +42,16 @@ public class Baker extends Thread {
         log.info("Пекарь " +  this.name + " начал работу");
         while (!isInterrupted()) {
             try {
-                Order order = pizzeria.forBaking.get();
+                Order order = pizzeria.getOrder();
                 log.info("[" + order.getId() + "]" + " [был взят курьером "
                         + this.name + "]");
                 Thread.sleep(this.bakingTime);
                 log.info("[" + order.getId() + "]" + " [был закончен пекарем "
                         + this.name + "]");
-                pizzeria.forDelivery.add(order);
+                pizzeria.sendForDelivery(order);
                 log.info("[" + order.getId() + "]" + " [был положен пекарем "
                         + this.name + " на склад]");
-                pizzeria.bakedOrders.getAndIncrement();
+                pizzeria.increaseOrderCount();
             } catch (InterruptedException e) {
                 log.info("Пекарь " +  this.name + " закончил работу");
             }

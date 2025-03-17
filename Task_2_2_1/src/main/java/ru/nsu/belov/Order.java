@@ -5,8 +5,8 @@ package ru.nsu.belov;
  */
 public class Order {
     private int id;
-    private String address;
-    private Integer deliveryTime;
+    private final String address;
+    private final Integer deliveryTime;
 
     /**
      * Constructor.
