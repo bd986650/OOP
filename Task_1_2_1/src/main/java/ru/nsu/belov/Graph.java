@@ -2,77 +2,23 @@ package ru.nsu.belov;
 
 import java.util.List;
 
-/**
- * interface graph.
- */
 public interface Graph {
 
-    /**
-     * add vertex.
-     *
-     * @param vertex int.
-     */
-    void addVertex(int vertex);
+    void addVertex(Integer vertex);
 
-    /**
-     * remove vertex.
-     *
-     * @param vertex int.
-     */
-    void removeVertex(int vertex);
+    void removeVertex(Integer vertex);
 
-    /**
-     * add edge.
-     *
-     * @param vertex1 int.
-     * @param vertex2 int.
-     */
-    void addEdge(int vertex1, int vertex2);
+    void addEdge(Integer vertex1, Integer vertex2);
 
-    /**
-     * remove edge.
-     *
-     * @param vertex1 int.
-     * @param vertex2 int.
-     */
-    void removeEdge(int vertex1, int vertex2);
+    void removeEdge(Integer vertex1, Integer vertex2);
 
-    /**
-     * get neighbors.
-     *
-     * @param vertex int.
-     *
-     * @return list int.
-     */
-    List<Integer> getNeighbors(int vertex);
+    List<Integer> getNeighbors(Integer vertex);
 
-    /**
-     * read from file.
-     *
-     * @param filename string.
-     */
     void readFromFile(String filename);
 
-    /**
-     * to string.
-     *
-     * @return string.
-     */
     String toString();
 
-    /**
-     * equals.
-     *
-     * @param obj object.
-     *
-     * @return boolean.
-     */
     boolean equals(Object obj);
 
-    /**
-     * topolog sort.
-     *
-     * @return List Integer.
-     */
     List<Integer> topologicalSort();
 }

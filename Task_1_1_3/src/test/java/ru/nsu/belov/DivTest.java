@@ -6,22 +6,14 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-/**
- * div test.
- */
 class DivTest {
-    /**
-     * test print.
-     */
+
     @Test
     public void testPrint() {
         Expression div = new Div(new Variable("x"), new Number(2));
         assertEquals("(x/2)", div.print());
     }
 
-    /**
-     * test eval.
-     */
     @Test
     public void testEval() {
         Expression div = new Div(new Variable("x"), new Number(2));
@@ -30,9 +22,6 @@ class DivTest {
         assertEquals(5, div.eval(vars));
     }
 
-    /**
-     * test deriv.
-     */
     @Test
     public void testDerivative() {
         Expression div = new Div(new Variable("x"), new Number(2));

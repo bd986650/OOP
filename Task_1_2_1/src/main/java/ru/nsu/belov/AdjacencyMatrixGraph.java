@@ -7,30 +7,17 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-/**
- * Adjacency Matrix Graph.
- */
 public class AdjacencyMatrixGraph implements Graph {
     private int[][] adjacencyMatrix;
     int vertexCount;
 
-    /**
-     * constructor.
-     *
-     * @param size int.
-     */
-    public AdjacencyMatrixGraph(int size) {
+    public AdjacencyMatrixGraph(Integer size) {
         this.vertexCount = size;
         this.adjacencyMatrix = new int[size][size];
     }
 
-    /**
-     * add vertex.
-     *
-     * @param vertex int.
-     */
     @Override
-    public void addVertex(int vertex) {
+    public void addVertex(Integer vertex) {
         if (vertex >= vertexCount) {
             int newSize = vertex + 1;
             int[][] newMatrix = new int[newSize][newSize];
@@ -42,13 +29,8 @@ public class AdjacencyMatrixGraph implements Graph {
         }
     }
 
-    /**
-     * remove vertex.
-     *
-     * @param vertex int.
-     */
     @Override
-    public void removeVertex(int vertex) {
+    public void removeVertex(Integer vertex) {
         if (vertex >= vertexCount) {
             return;
         }
@@ -58,41 +40,22 @@ public class AdjacencyMatrixGraph implements Graph {
         }
     }
 
-    /**
-     * add edge.
-     *
-     * @param vertex1 int.
-     * @param vertex2 int.
-     */
     @Override
-    public void addEdge(int vertex1, int vertex2) {
+    public void addEdge(Integer vertex1, Integer vertex2) {
         if (vertex1 < vertexCount && vertex2 < vertexCount) {
             adjacencyMatrix[vertex1][vertex2] = 1;
         }
     }
 
-    /**
-     * remove edge.
-     *
-     * @param vertex1 int.
-     * @param vertex2 int.
-     */
     @Override
-    public void removeEdge(int vertex1, int vertex2) {
+    public void removeEdge(Integer vertex1, Integer vertex2) {
         if (vertex1 < vertexCount && vertex2 < vertexCount) {
             adjacencyMatrix[vertex1][vertex2] = 0;
         }
     }
 
-    /**
-     * get neighbors.
-     *
-     * @param vertex int.
-     *
-     * @return list integer.
-     */
     @Override
-    public List<Integer> getNeighbors(int vertex) {
+    public List<Integer> getNeighbors(Integer vertex) {
         List<Integer> neighbors = new ArrayList<>();
         for (int i = 0; i < vertexCount; i++) {
             if (adjacencyMatrix[vertex][i] == 1) {
@@ -102,11 +65,6 @@ public class AdjacencyMatrixGraph implements Graph {
         return neighbors;
     }
 
-    /**
-     * read from file.
-     *
-     * @param filename string.
-     */
     @Override
     public void readFromFile(String filename) {
         try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
@@ -122,15 +80,11 @@ public class AdjacencyMatrixGraph implements Graph {
                 vertex++;
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RuntimeException("Error reading file: " + filename, e);
         }
     }
 
-    /**
-     * to string.
-     *
-     * @return string.
-     */
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -144,13 +98,6 @@ public class AdjacencyMatrixGraph implements Graph {
         return sb.toString();
     }
 
-    /**
-     * equals.
-     *
-     * @param obj object.
-     *
-     * @return boolean.
-     */
     @Override
     public boolean equals(Object obj) {
         if (!(obj instanceof AdjacencyMatrixGraph)) {
@@ -160,11 +107,6 @@ public class AdjacencyMatrixGraph implements Graph {
         return Arrays.deepEquals(this.adjacencyMatrix, other.adjacencyMatrix);
     }
 
-    /**
-     * topolog sort.
-     *
-     * @return null.
-     */
     @Override
     public List<Integer> topologicalSort() {
         List<Integer> result = new ArrayList<>();
@@ -178,13 +120,6 @@ public class AdjacencyMatrixGraph implements Graph {
         return result;
     }
 
-    /**
-     * helper.
-     *
-     * @param vertex int.
-     * @param visited boolean array.
-     * @param result list integer.
-     */
     private void topologicalSortUtil(int vertex, boolean[] visited, List<Integer> result) {
         visited[vertex] = true;
 

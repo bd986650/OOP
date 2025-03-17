@@ -11,14 +11,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-/**
- * test.
- */
 class IncidenceMatrixGraphTest {
 
-    /**
-     * add vertex test.
-     */
     @Test
     public void testAddVertex() {
         IncidenceMatrixGraph graph = new IncidenceMatrixGraph(3, 3);
@@ -29,9 +23,6 @@ class IncidenceMatrixGraphTest {
         assertEquals(0, graph.getNeighbors(3).size());
     }
 
-    /**
-     * remove vertex test.
-     */
     @Test
     public void testRemoveVertex() {
         IncidenceMatrixGraph graph = new IncidenceMatrixGraph(4, 4);
@@ -50,9 +41,6 @@ class IncidenceMatrixGraphTest {
         assertFalse(neighbors2.contains(1));
     }
 
-    /**
-     * add edge test.
-     */
     @Test
     public void testAddEdge() {
         IncidenceMatrixGraph graph = new IncidenceMatrixGraph(3, 3);
@@ -61,9 +49,6 @@ class IncidenceMatrixGraphTest {
         assertTrue(neighbors.contains(1));
     }
 
-    /**
-     * remove edge test.
-     */
     @Test
     public void testRemoveEdge() {
         IncidenceMatrixGraph graph = new IncidenceMatrixGraph(3, 3);
@@ -73,9 +58,6 @@ class IncidenceMatrixGraphTest {
         assertFalse(neighbors.contains(1));
     }
 
-    /**
-     * top sort test.
-     */
     @Test
     public void testTopologicalSort() {
         IncidenceMatrixGraph graph = new IncidenceMatrixGraph(4, 4);
@@ -89,9 +71,6 @@ class IncidenceMatrixGraphTest {
         assertEquals(expected, result);
     }
 
-    /**
-     * equals test.
-     */
     @Test
     public void testEquals() {
         IncidenceMatrixGraph graph1 = new IncidenceMatrixGraph(3, 3);
@@ -103,11 +82,6 @@ class IncidenceMatrixGraphTest {
         assertTrue(graph1.equals(graph2));
     }
 
-    /**
-     * file test.
-     *
-     * @throws IOException exception.
-     */
     @Test
     public void testReadFromFile() throws IOException {
         Path tempFile = Files.createTempFile("graph", ".txt");

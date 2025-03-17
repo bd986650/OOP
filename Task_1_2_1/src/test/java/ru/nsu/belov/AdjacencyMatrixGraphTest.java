@@ -11,14 +11,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-/**
- * test.
- */
 class AdjacencyMatrixGraphTest {
 
-    /**
-     * add vertex test.
-     */
     @Test
     public void testAddVertex() {
         AdjacencyMatrixGraph graph = new AdjacencyMatrixGraph(3);
@@ -29,9 +23,6 @@ class AdjacencyMatrixGraphTest {
         assertEquals(0, graph.getNeighbors(3).size());
     }
 
-    /**
-     * test adding duplicate vertex.
-     */
     @Test
     public void testAddDuplicateVertex() {
         AdjacencyMatrixGraph graph = new AdjacencyMatrixGraph(3);
@@ -41,9 +32,6 @@ class AdjacencyMatrixGraphTest {
         assertEquals(initialVertexCount, graph.vertexCount);
     }
 
-    /**
-     * add edge test.
-     */
     @Test
     public void testAddEdge() {
         AdjacencyMatrixGraph graph = new AdjacencyMatrixGraph(3);
@@ -53,9 +41,6 @@ class AdjacencyMatrixGraphTest {
         assertTrue(neighbors.contains(1));
     }
 
-    /**
-     * remove edge test.
-     */
     @Test
     public void testRemoveEdge() {
         AdjacencyMatrixGraph graph = new AdjacencyMatrixGraph(3);
@@ -65,9 +50,6 @@ class AdjacencyMatrixGraphTest {
         assertFalse(neighbors.contains(1));
     }
 
-    /**
-     * test removing vertex.
-     */
     @Test
     public void testRemoveVertex() {
         AdjacencyMatrixGraph graph = new AdjacencyMatrixGraph(3);
@@ -79,9 +61,6 @@ class AdjacencyMatrixGraphTest {
         assertFalse(graph.getNeighbors(1).contains(2));
     }
 
-    /**
-     * top sort test.
-     */
     @Test
     public void testTopologicalSort() {
         AdjacencyMatrixGraph graph = new AdjacencyMatrixGraph(4);
@@ -95,9 +74,6 @@ class AdjacencyMatrixGraphTest {
         assertEquals(expected, result);
     }
 
-    /**
-     * equals test.
-     */
     @Test
     public void testEquals() {
         AdjacencyMatrixGraph graph1 = new AdjacencyMatrixGraph(3);
@@ -109,9 +85,6 @@ class AdjacencyMatrixGraphTest {
         assertTrue(graph1.equals(graph2));
     }
 
-    /**
-     * test self-loop.
-     */
     @Test
     public void testSelfLoop() {
         AdjacencyMatrixGraph graph = new AdjacencyMatrixGraph(3);
@@ -121,11 +94,6 @@ class AdjacencyMatrixGraphTest {
         assertTrue(neighbors.contains(1));
     }
 
-    /**
-     * file test.
-     *
-     * @throws IOException exception.
-     */
     @Test
     public void testReadFromFile() throws IOException {
         Path tempFile = Files.createTempFile("graph", ".txt");
