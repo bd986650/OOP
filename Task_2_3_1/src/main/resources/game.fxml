@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="ru.nsu.belov.controller.GameController">
+
+    <!-- Верхняя панель -->
+    <top>
+        <Label text="Snake Game"
+               style="-fx-font-size: 28px; -fx-text-fill: green;"
+               alignment="CENTER"
+               maxWidth="Infinity"
+               BorderPane.alignment="CENTER"/>
+    </top>
+
+    <!-- Игровое поле -->
+    <center>
+        <StackPane>
+            <AnchorPane>
+                <Canvas fx:id="canvas" layoutX="0" layoutY="0"/>
+            </AnchorPane>
+
+            <!-- Концовка игры -->
+            <VBox fx:id="endOverlay" alignment="CENTER" spacing="20"
+                  visible="false"
+                  style="-fx-background-color: rgba(0, 0, 0, 0.6);"
+                  maxWidth="Infinity" maxHeight="Infinity">
+                <Label fx:id="statusLabel" style="-fx-font-size: 32px; -fx-text-fill: white;"/>
+                <HBox spacing="25" alignment="CENTER">
+                    <Button text="Перезапуск" onAction="#restartGame"/>
+                    <Button text="Настройки" onAction="#goToSettings"/>
+                </HBox>
+            </VBox>
+        </StackPane>
+    </center>
+
+</BorderPane>
