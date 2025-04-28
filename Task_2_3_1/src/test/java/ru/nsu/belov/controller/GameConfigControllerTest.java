@@ -78,6 +78,6 @@ class GameConfigControllerTest {
     @Test
     @DisplayName("Много еды + большая длина победы — допустимо")
     void foodAndWinLengthLargeButValid_ShouldReturnTrue() {
-        assertTrue(GameConfigController.isValidConfig(5, 5, 10, 20));
+        assertTrue(GameConfigController.isValidConfig(16, 16, 10, 20));
     }
 }
