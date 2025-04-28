@@ -5,9 +5,11 @@ import javafx.geometry.Point2D;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import ru.nsu.belov.model.Direction;
 
 import java.util.ArrayList;
@@ -19,17 +21,22 @@ public class GameController {
     @FXML private Label statusLabel;
     @FXML private VBox endOverlay;
 
-    private int rows, cols, foodCount, winLength;
+    private int rows, cols, foodCount, winLength, speed;
+    private static final int CELL_SIZE = 15;
+    private Image appleImage;
 
-    private static final int CELL_SIZE = 20;
+    public void initialize() {
+        // Загружаем картинку яблока
+        appleImage = new Image(getClass().getResource("/apple.png").toExternalForm());
+    }
 
-    public void initGame(int rows, int cols, int foodCount, int winLength) {
+    public void initGame(int rows, int cols, int foodCount, int winLength, int speed) {
         this.rows = rows;
         this.cols = cols;
         this.foodCount = foodCount;
         this.winLength = winLength;
 
-        gameService.initGame(rows, cols, foodCount, winLength);
+        gameService.initGame(rows, cols, foodCount, winLength, speed);
 
         endOverlay.setVisible(false);
         canvas.setFocusTraversable(true);
@@ -54,34 +61,57 @@ public class GameController {
 
     @FXML
     private void restartGame() {
-        initGame(rows, cols, foodCount, winLength);
+        initGame(rows, cols, foodCount, winLength, speed);
     }
 
     public void draw() {
         GraphicsContext gc = canvas.getGraphicsContext2D();
         gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
 
-        canvas.setWidth(cols * CELL_SIZE);
-        canvas.setHeight(rows * CELL_SIZE);
+        canvas.setWidth(cols * CELL_SIZE + 20);
+        canvas.setHeight(rows * CELL_SIZE + 60);
 
-        gc.setStroke(Color.LIGHTGRAY);
-        for (int x = 0; x <= cols; x++) {
-            gc.strokeLine(x * CELL_SIZE, 0, x * CELL_SIZE, canvas.getHeight());
-        }
-        for (int y = 0; y <= rows; y++) {
-            gc.strokeLine(0, y * CELL_SIZE, canvas.getWidth(), y * CELL_SIZE);
-        }
+        // Фон
+        gc.setFill(Color.rgb(180, 200, 150));
+        gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
 
+        // Рамка игрового поля
+        gc.setStroke(Color.BLACK);
+        gc.setLineWidth(3);
+        gc.strokeRect(10, 30, cols * CELL_SIZE, rows * CELL_SIZE);
+
+        // Заголовок сверху
+        gc.setFill(Color.BLACK);
+        gc.setFont(Font.font("Monospaced", 24));
+        gc.fillText("SNAKE GAME", canvas.getWidth() / 2 - 45, 25);
+
+        // Счёт внизу
+        gc.setFont(Font.font("Monospaced", 18));
+        gc.fillText("Length: " + (gameService.getModel().getSnake().getBody().size()), canvas.getWidth() / 2 - 50, canvas.getHeight() - 15);
+
+        renderSnake(gc);
+        renderFood(gc);
+    }
+
+    private void renderSnake(GraphicsContext gc) {
         var snakeParts = new ArrayList<>(gameService.getModel().getSnake().getBody());
-        for (int i = 0; i < snakeParts.size(); i++) {
-            Point2D part = snakeParts.get(i);
-            gc.setFill(Color.BLUEVIOLET);
-            gc.fillRect(part.getX() * CELL_SIZE, part.getY() * CELL_SIZE, CELL_SIZE, CELL_SIZE);
-        }
 
-        gc.setFill(Color.RED);
-        for (var food : gameService.getModel().getFood()) {
-            gc.fillOval(food.getX() * CELL_SIZE, food.getY() * CELL_SIZE, CELL_SIZE, CELL_SIZE);
+        for (Point2D part : snakeParts) {
+            double x = 10 + part.getX() * CELL_SIZE;
+            double y = 30 + part.getY() * CELL_SIZE;
+
+            gc.setFill(Color.BLACK);
+            gc.fillRoundRect(x, y, CELL_SIZE, CELL_SIZE, 4, 4); // Чуть скругляем
+        }
+    }
+
+    private void renderFood(GraphicsContext gc) {
+        for (Point2D food : gameService.getModel().getFood()) {
+            double x = 10 + food.getX() * CELL_SIZE;
+            double y = 30 + food.getY() * CELL_SIZE;
+
+            // Рисуем картинку яблока вместо круга!
+            gc.drawImage(appleImage, x, y, CELL_SIZE, CELL_SIZE);
         }
     }
 

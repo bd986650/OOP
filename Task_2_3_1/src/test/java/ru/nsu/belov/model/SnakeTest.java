@@ -4,18 +4,21 @@ import javafx.geometry.Point2D;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import ru.nsu.belov.data.SnakeData;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class SnakeTest {
 
     private Snake snake;
+    private SnakeData snakeData;
     private Point2D start;
 
     @BeforeEach
     void setUp() {
         start = new Point2D(5, 5);
-        snake = new Snake(start);
+        snakeData = new SnakeData(start);
+        snake = new Snake(snakeData);
     }
 
     @Test

@@ -26,26 +26,24 @@ public class Main extends Application {
 
         mainStage.setTitle("Настройки");
         mainStage.setScene(scene);
-        mainStage.setWidth(400);
-        mainStage.setHeight(300);
+        mainStage.setWidth(800);
+        mainStage.setHeight(700);
         mainStage.show();
     }
 
-    public static void startGameWithConfig(int rows, int cols, int food, int winLength) throws Exception {
+    public static void startGameWithConfig(int rows, int cols, int food, int winLength, int speed) throws Exception {
         FXMLLoader loader = new FXMLLoader(Main.class.getResource("/game.fxml"));
         Scene scene = new Scene(loader.load());
 
         GameController controller = loader.getController();
         gameService.setGameController(controller);
-        controller.initGame(rows, cols, food, winLength);
-
-        int width = cols * 20 + 16;
-        int height = rows * 20 + 139;
+        controller.initGame(rows, cols, food, winLength, speed);
 
         mainStage.setScene(scene);
-        mainStage.setWidth(width);
-        mainStage.setHeight(height);
+        mainStage.setWidth(800);
+        mainStage.setHeight(600);
     }
+
 
     public static void main(String[] args) {
         launch(args);

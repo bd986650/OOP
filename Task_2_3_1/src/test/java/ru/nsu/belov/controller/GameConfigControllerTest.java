@@ -10,7 +10,7 @@ class GameConfigControllerTest {
     @Test
     @DisplayName("Корректная конфигурация")
     void validConfig_ShouldReturnTrue() {
-        assertTrue(GameConfigController.isValidConfig(10, 10, 3, 20));
+        assertTrue(GameConfigController.isValidConfig(16, 16, 3, 20));
     }
 
     @Test
@@ -47,7 +47,7 @@ class GameConfigControllerTest {
     @DisplayName("Пограничные значения")
     void edgeValues_ShouldReturnTrue() {
         assertAll(
-                () -> assertTrue(GameConfigController.isValidConfig(5, 5, 1, 2)),
+                () -> assertTrue(GameConfigController.isValidConfig(16, 16, 1, 2)),
                 () -> assertTrue(GameConfigController.isValidConfig(30, 30, 16, 900))
         );
     }
