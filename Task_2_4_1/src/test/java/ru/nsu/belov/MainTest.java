@@ -6,12 +6,17 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+import java.io.InputStream;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.io.TempDir;
 import ru.nsu.belov.model.Student;
 import ru.nsu.belov.model.Task;
@@ -25,6 +30,10 @@ public class MainTest {
     private Binding binding;
     private StudentsConfig studentsConfig;
     private TasksConfig tasksConfig;
+    private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+    private final PrintStream originalOut = System.out;
+    private final ByteArrayInputStream inContent = new ByteArrayInputStream("exit".getBytes());
+    private final InputStream originalIn = System.in;
 
     @BeforeEach
     void setUp() throws IOException {
@@ -33,9 +42,17 @@ public class MainTest {
             binding = new Binding();
             studentsConfig = new StudentsConfig();
             tasksConfig = new TasksConfig();
+            System.setOut(new PrintStream(outContent));
+            System.setIn(inContent);
         } catch (IOException e) {
             fail("Failed to initialize GroovyScriptEngine: " + e.getMessage());
         }
+    }
+
+    @AfterEach
+    void tearDown() {
+        System.setOut(originalOut);
+        System.setIn(originalIn);
     }
 
     @Test
@@ -97,5 +114,42 @@ public class MainTest {
         } catch (Exception e) {
             fail("Failed to process tasks: " + e.getMessage());
         }
+    }
+
+    @Test
+    void testMainHelpCommand() {
+        String input = "help\nexit";
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+
+        Main.main(new String[]{});
+
+        String output = outContent.toString();
+        assertTrue(output.contains("ex / exit"));
+        assertTrue(output.contains("help"));
+        assertTrue(output.contains("html"));
+    }
+
+    @Test
+    void testMainHtmlCommand() {
+        String input = "html\nexit";
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+
+        Main.main(new String[]{});
+
+        String output = outContent.toString();
+        assertTrue(output.contains("HTML report generated successfully!"));
+    }
+
+    @Test
+    void testMainExitCommand() {
+        String input = "exit";
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+
+        Main.main(new String[]{});
+
+        String output = outContent.toString();
+        assertTrue(output.contains("ex / exit"));
+        assertTrue(output.contains("help"));
+        assertTrue(output.contains("html"));
     }
 }
