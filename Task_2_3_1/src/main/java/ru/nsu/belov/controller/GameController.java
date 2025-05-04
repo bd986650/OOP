@@ -4,10 +4,8 @@ import javafx.fxml.FXML;
 import javafx.geometry.Point2D;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import ru.nsu.belov.model.Direction;
@@ -18,15 +16,12 @@ import static ru.nsu.belov.Main.gameService;
 
 public class GameController {
     @FXML private Canvas canvas;
-    @FXML private Label statusLabel;
-    @FXML private VBox endOverlay;
 
     private int rows, cols, foodCount, winLength, speed;
     private static final int CELL_SIZE = 15;
     private Image appleImage;
 
     public void initialize() {
-        // Загружаем картинку яблока
         appleImage = new Image(getClass().getResource("/apple.png").toExternalForm());
     }
 
@@ -35,13 +30,13 @@ public class GameController {
         this.cols = cols;
         this.foodCount = foodCount;
         this.winLength = winLength;
+        this.speed = speed;
 
         gameService.initGame(rows, cols, foodCount, winLength, speed);
-
-        endOverlay.setVisible(false);
         canvas.setFocusTraversable(true);
         canvas.setOnKeyPressed(this::handleKeyInput);
-        statusLabel.setText("");
+
+        draw();
     }
 
     private void handleKeyInput(KeyEvent event) {
@@ -55,13 +50,11 @@ public class GameController {
 
     public void endGame(String resultMessage) {
         gameService.stop();
-        statusLabel.setText(resultMessage);
-        endOverlay.setVisible(true);
-    }
-
-    @FXML
-    private void restartGame() {
-        initGame(rows, cols, foodCount, winLength, speed);
+        try {
+            ru.nsu.belov.Main.showGameEndScene(resultMessage);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void draw() {
@@ -71,21 +64,17 @@ public class GameController {
         canvas.setWidth(cols * CELL_SIZE + 20);
         canvas.setHeight(rows * CELL_SIZE + 60);
 
-        // Фон
         gc.setFill(Color.rgb(180, 200, 150));
         gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
 
-        // Рамка игрового поля
         gc.setStroke(Color.BLACK);
         gc.setLineWidth(3);
         gc.strokeRect(10, 30, cols * CELL_SIZE, rows * CELL_SIZE);
 
-        // Заголовок сверху
         gc.setFill(Color.BLACK);
         gc.setFont(Font.font("Monospaced", 24));
         gc.fillText("SNAKE GAME", canvas.getWidth() / 2 - 45, 25);
 
-        // Счёт внизу
         gc.setFont(Font.font("Monospaced", 18));
         gc.fillText("Length: " + (gameService.getModel().getSnake().getBody().size()), canvas.getWidth() / 2 - 50, canvas.getHeight() - 15);
 
@@ -101,7 +90,7 @@ public class GameController {
             double y = 30 + part.getY() * CELL_SIZE;
 
             gc.setFill(Color.BLACK);
-            gc.fillRoundRect(x, y, CELL_SIZE, CELL_SIZE, 4, 4); // Чуть скругляем
+            gc.fillRoundRect(x, y, CELL_SIZE, CELL_SIZE, 4, 4);
         }
     }
 
@@ -109,18 +98,7 @@ public class GameController {
         for (Point2D food : gameService.getModel().getFood()) {
             double x = 10 + food.getX() * CELL_SIZE;
             double y = 30 + food.getY() * CELL_SIZE;
-
-            // Рисуем картинку яблока вместо круга!
             gc.drawImage(appleImage, x, y, CELL_SIZE, CELL_SIZE);
-        }
-    }
-
-    @FXML
-    private void goToSettings() {
-        try {
-            ru.nsu.belov.Main.showConfigScene();
-        } catch (Exception ex) {
-            ex.printStackTrace();
         }
     }
 }

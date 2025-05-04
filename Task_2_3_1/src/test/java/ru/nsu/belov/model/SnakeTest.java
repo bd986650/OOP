@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class SnakeTest {
 
-    private Snake snake;
+    private SnakeModel snake;
     private SnakeData snakeData;
     private Point2D start;
 
@@ -18,7 +18,7 @@ class SnakeTest {
     void setUp() {
         start = new Point2D(5, 5);
         snakeData = new SnakeData(start);
-        snake = new Snake(snakeData);
+        snake = new SnakeModel(snakeData);
     }
 
     @Test

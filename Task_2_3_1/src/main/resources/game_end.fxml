@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="20" alignment="CENTER" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="ru.nsu.belov.controller.GameEndController"
+      style="-fx-background-color: rgb(180, 200, 150);">
+
+    <Label fx:id="resultLabel" style="-fx-font-size: 48px; -fx-text-fill: white; -fx-font-weight: bold;"/>
+
+    <HBox spacing="25" alignment="CENTER">
+        <Button text="Перезапуск" onAction="#restartGame"
+                style="-fx-font-size: 20px; -fx-background-color: #4CAF50; -fx-text-fill: white; -fx-padding: 10 20;"/>
+        <Button text="Настройки" onAction="#goToSettings"
+                style="-fx-font-size: 20px; -fx-background-color: #4CAF50; -fx-text-fill: white; -fx-padding: 10 20;"/>
+    </HBox>
+
+    <!-- Контейнер для анимированных яблок -->
+    <StackPane prefHeight="100" alignment="CENTER">
+        <HBox fx:id="appleContainer" spacing="30" alignment="CENTER_LEFT"/>
+    </StackPane>
+
+</VBox>

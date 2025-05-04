@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import ru.nsu.belov.controller.GameController;
+import ru.nsu.belov.controller.GameEndController;
 import ru.nsu.belov.service.ConfigService;
 import ru.nsu.belov.service.GameService;
 
@@ -44,6 +45,17 @@ public class Main extends Application {
         mainStage.setHeight(600);
     }
 
+    public static void showGameEndScene(String result) throws Exception {
+        FXMLLoader loader = new FXMLLoader(Main.class.getResource("/game_end.fxml"));
+        Scene scene = new Scene(loader.load());
+
+        GameEndController controller = loader.getController();
+        controller.setResult(result);
+
+        mainStage.setScene(scene);
+        mainStage.setWidth(800);
+        mainStage.setHeight(600);
+    }
 
     public static void main(String[] args) {
         launch(args);

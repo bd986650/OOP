@@ -26,7 +26,7 @@ public class GameService {
 
     public void initGame(int rows, int cols, int foodCount, int winLength, int speed) {
         model = new GameModel(rows, cols, foodCount, winLength);
-        timeline = new Timeline(new KeyFrame(Duration.millis(speed), e -> updateGame())); // Используем переданную скорость
+        timeline = new Timeline(new KeyFrame(Duration.millis(speed), e -> updateGame()));
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.play();
     }

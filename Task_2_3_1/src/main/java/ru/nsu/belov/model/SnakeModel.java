@@ -5,10 +5,10 @@ import ru.nsu.belov.data.SnakeData;
 
 import java.util.Deque;
 
-public class Snake {
+public class SnakeModel {
     private SnakeData data;
 
-    public Snake(SnakeData data) {
+    public SnakeModel(SnakeData data) {
         this.data = data;
     }
 

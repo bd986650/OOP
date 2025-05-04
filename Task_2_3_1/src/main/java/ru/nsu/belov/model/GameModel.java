@@ -1,56 +1,44 @@
 package ru.nsu.belov.model;
 
 import javafx.geometry.Point2D;
+import ru.nsu.belov.data.GameData;
 import ru.nsu.belov.data.SnakeData;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 public class GameModel {
-    private final int rows;
-    private final int cols;
-    private final int maxLength;
-    private Snake snake;  // Теперь использует Snake, а не SnakeData напрямую
-    private List<Point2D> foodList = new ArrayList<>();
+    private GameData data;
     private Random random = new Random();
 
     public GameModel(int rows, int cols, int foodCount, int maxLength) {
-        this.rows = rows;
-        this.cols = cols;
-        this.maxLength = maxLength;
+        this.data = new GameData(rows, cols, maxLength);
 
-        // Инициализация SnakeData и передача его в Snake
         SnakeData snakeData = new SnakeData(new Point2D(cols / 2.0, rows / 2.0));
-        this.snake = new Snake(snakeData);
+        this.data.setSnake(new SnakeModel(snakeData));
 
-        // Генерация начальной еды
         for (int i = 0; i < foodCount; i++) {
             placeFood();
         }
     }
 
-    public Snake getSnake() {
-        return snake;
+    public SnakeModel getSnake() {
+        return data.getSnake();
     }
 
-    public List<Point2D> getFood() {
-        return foodList;
+    public java.util.List<Point2D> getFood() {
+        return data.getFoodList();
     }
 
     public boolean update() {
-        Point2D nextHead = snake.getNextHeadPosition();
-        boolean ateFood = foodList.remove(nextHead);
+        Point2D nextHead = data.getSnake().getNextHeadPosition();
+        boolean ateFood = data.getFoodList().remove(nextHead);
 
-        // Проверка столкновений
         if (isCollision(nextHead)) {
             return false;
         }
 
-        // Двигаем змейку
-        snake.move(ateFood);
+        data.getSnake().move(ateFood);
 
-        // Если змейка съела еду, размещаем новую
         if (ateFood) {
             placeFood();
         }
@@ -58,33 +46,39 @@ public class GameModel {
     }
 
     public boolean isVictory() {
-        return snake.getBody().size() >= maxLength;
+        return data.getSnake().getBody().size() >= data.getMaxLength();
     }
 
     private boolean isCollision(Point2D head) {
-        // Проверка, не выходит ли змейка за пределы поля или не сталкивается ли она с собой
-        return head.getX() < 0 || head.getX() >= cols ||
-                head.getY() < 0 || head.getY() >= rows ||
-                snake.isColliding(head);
+        if (head.getX() < 0 || head.getX() >= data.getCols() ||
+            head.getY() < 0 || head.getY() >= data.getRows()) {
+            return true;
+        }
+
+        var body = data.getSnake().getBody();
+        var tail = body.peekLast();
+        return body.stream()
+            .filter(p -> !p.equals(tail))
+            .anyMatch(p -> p.equals(head));
     }
 
     private void placeFood() {
         Point2D point;
         do {
-            point = new Point2D(random.nextInt(cols), random.nextInt(rows));
-        } while (snake.isColliding(point) || foodList.contains(point));
-        foodList.add(point);
+            point = new Point2D(random.nextInt(data.getCols()), random.nextInt(data.getRows()));
+        } while (data.getSnake().isColliding(point) || data.getFoodList().contains(point));
+        data.getFoodList().add(point);
     }
 
     public int getRows() {
-        return rows;
+        return data.getRows();
     }
 
     public int getCols() {
-        return cols;
+        return data.getCols();
     }
 
     public int getWinLength() {
-        return maxLength;
+        return data.getMaxLength();
     }
 }

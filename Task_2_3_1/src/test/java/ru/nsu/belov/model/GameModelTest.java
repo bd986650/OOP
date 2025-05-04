@@ -48,7 +48,7 @@ class GameModelTest {
     @Test
     @DisplayName("Змейка ест еду при движении")
     void update_ShouldEatFoodIfOnPath() {
-        Snake snake = model.getSnake();
+        SnakeModel snake = model.getSnake();
         Point2D nextHead = snake.getNextHeadPosition();
 
         model.getFood().clear();
@@ -67,7 +67,7 @@ class GameModelTest {
     @Test
     @DisplayName("Игра заканчивается, если змейка врезается в стену")
     void update_ShouldGameOverWhenHitsWall() {
-        Snake snake = model.getSnake();
+        SnakeModel snake = model.getSnake();
         snake.setDirection(Direction.LEFT);
 
         // Двигаемся до упора в стену
@@ -80,7 +80,7 @@ class GameModelTest {
     @Test
     @DisplayName("Победа при достижении необходимой длины")
     void victoryCondition_ShouldTriggerWhenLengthReached() {
-        Snake snake = model.getSnake();
+        SnakeModel snake = model.getSnake();
         for (int i = 0; i < winLength - 1; i++) {
             snake.move(true);
         }

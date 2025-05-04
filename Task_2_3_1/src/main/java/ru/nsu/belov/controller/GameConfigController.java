@@ -19,8 +19,8 @@ import java.util.List;
 import static ru.nsu.belov.Main.configService;
 
 public class GameConfigController {
-    @FXML private Slider rowsSlider;  // Ползунок для строк
-    @FXML private Slider colsSlider;  // Ползунок для столбцов
+    @FXML private Slider rowsSlider;  
+    @FXML private Slider colsSlider;  
     @FXML private TextField foodField;
     @FXML private TextField winLengthField;
     @FXML private HBox appleContainer;
@@ -60,15 +60,14 @@ public class GameConfigController {
     }
 
     private void moveApples() {
-        double speed = 2; // Скорость движения яблок
-        double sceneWidth = appleContainer.getScene().getWidth(); // Ширина окна
+        double speed = 2;
+        double sceneWidth = appleContainer.getScene().getWidth();
 
         for (ImageView apple : apples) {
             apple.setTranslateX(apple.getTranslateX() + speed);
 
-            // Если яблоко полностью ушло за правую границу — вернуть его слева
             if (apple.localToScene(apple.getBoundsInLocal()).getMinX() > sceneWidth) {
-                apple.setTranslateX(apple.getTranslateX() - sceneWidth - 100); // 100 - небольшой запас
+                apple.setTranslateX(apple.getTranslateX() - sceneWidth - 100);
             }
         }
     }
@@ -76,7 +75,6 @@ public class GameConfigController {
     @FXML
     private void startGame() {
         try {
-            // Получаем значения с ползунков
             int rows = (int) rowsSlider.getValue();
             int cols = (int) colsSlider.getValue();
             int food = Integer.parseInt(foodField.getText());
