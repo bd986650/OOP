@@ -152,4 +152,57 @@ public class MainTest {
         assertTrue(output.contains("help"));
         assertTrue(output.contains("html"));
     }
+
+    @Test
+    void testMainInvalidCommand() {
+        String input = "invalid\nexit";
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+
+        Main.main(new String[]{});
+
+        String output = outContent.toString();
+        assertTrue(output.contains("ex / exit"));
+        assertTrue(output.contains("help"));
+        assertTrue(output.contains("html"));
+    }
+
+    @Test
+    void testMainMultipleCommands() {
+        String input = "help\nhtml\nhelp\nexit";
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+
+        Main.main(new String[]{});
+
+        String output = outContent.toString();
+        assertTrue(output.contains("ex / exit"));
+        assertTrue(output.contains("help"));
+        assertTrue(output.contains("html"));
+        assertTrue(output.contains("HTML report generated successfully!"));
+    }
+
+    @Test
+    void testMainExCommand() {
+        String input = "ex";
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+
+        Main.main(new String[]{});
+
+        String output = outContent.toString();
+        assertTrue(output.contains("ex / exit"));
+        assertTrue(output.contains("help"));
+        assertTrue(output.contains("html"));
+    }
+
+    @Test
+    void testMainEmptyInput() {
+        String input = "\nexit";
+        System.setIn(new ByteArrayInputStream(input.getBytes()));
+
+        Main.main(new String[]{});
+
+        String output = outContent.toString();
+        assertTrue(output.contains("ex / exit"));
+        assertTrue(output.contains("help"));
+        assertTrue(output.contains("html"));
+    }
 }
