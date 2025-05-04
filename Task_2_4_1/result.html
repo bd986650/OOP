@@ -1,0 +1,672 @@
+
+        <!DOCTYPE html>
+        <html lang="ru">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Анализ проектов</title>
+            <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+            <style>
+                
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --success: #10b981;
+            --danger: #ef4444;
+            --warning: #f59e0b;
+            --light: #f8fafc;
+            --dark: #1e293b;
+            --gray: #64748b;
+            --light-gray: #e2e8f0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: #f1f5f9;
+            padding: 2rem;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stats-bar {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            background: var(--light);
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 1rem;
+            background: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+        }
+        
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.25rem;
+        }
+        
+        .stat-label {
+            color: var(--gray);
+            font-size: 0.875rem;
+        }
+        
+        .task-list {
+            padding: 1.5rem;
+        }
+        
+        .task-item {
+            margin-bottom: 1rem;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+            transition: all 0.3s ease;
+            border: 1px solid var(--light-gray);
+        }
+        
+        .task-header {
+            background: white;
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        
+        .task-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+        }
+        
+        .task-status {
+            padding: 0.375rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        
+        .status-completed {
+            background-color: rgba(16, 185, 129, 0.1);
+            color: var(--success);
+        }
+        
+        .status-failed {
+            background-color: rgba(239, 68, 68, 0.1);
+            color: var(--danger);
+        }
+        
+        .status-warning {
+            background-color: rgba(245, 158, 11, 0.1);
+            color: var(--warning);
+        }
+        
+        .task-content {
+            display: none;
+            background: white;
+            padding: 1.5rem;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+        }
+        
+        th, td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        
+        th {
+            background-color: var(--light);
+            font-weight: 600;
+            color: var(--gray);
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 0.05em;
+        }
+        
+        tr:hover {
+            background-color: var(--light);
+        }
+        
+        .status-cell {
+            font-weight: 500;
+        }
+        
+        .status-success {
+            color: var(--success);
+        }
+        
+        .status-error {
+            color: var(--danger);
+        }
+        
+        .status-warning {
+            color: var(--warning);
+        }
+        
+            </style>
+        </head>
+        <body>
+            <div class="container">
+                
+        <header>
+            <h1>Анализ проектов</h1>
+        </header>
+        
+                
+        <div class="stats-bar">
+            <div class="stat-item">
+                <div class="stat-value">8</div>
+                <div class="stat-label">Всего задач</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">18</div>
+                <div class="stat-label">Успешных сборок</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">18</div>
+                <div class="stat-label">Успешных тестов</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">18</div>
+                <div class="stat-label">Успешных javadoc</div>
+            </div>
+        </div>
+        
+                
+        <div class="task-list">
+            
+                <div class="task-item">
+                    <div class="task-header">
+                        <div class="task-title">Task_1_1_1</div>
+                        <div class="task-status status-failed">Неуспешно</div>
+                    </div>
+                    <div class="task-content">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Студент</th>
+                                    <th>Сборка</th>
+                                    <th>Тесты</th>
+                                    <th>Javadoc</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                
+                                    <tr>
+                                        <td>DanilBelov</td>
+                                        <td class="status-cell status-warning">-</td>
+                                        <td class="status-cell status-warning">-</td>
+                                        <td class="status-cell status-warning">-</td>
+                                    </tr>
+                                    
+
+                                    <tr>
+                                        <td>KolyaPronin</td>
+                                        <td class="status-cell status-success">+</td>
+                                        <td class="status-cell status-success">100%</td>
+                                        <td class="status-cell status-success">+</td>
+                                    </tr>
+                                    
+
+                                    <tr>
+                                        <td>ArtemMikiyanskii</td>
+                                        <td class="status-cell status-warning">-</td>
+                                        <td class="status-cell status-warning">-</td>
+                                        <td class="status-cell status-warning">-</td>
+                                    </tr>
+                                    
+
+                                    <tr>
+                                        <td>NikitaAbramkin</td>
+                                        <td class="status-cell status-success">+</td>
+                                        <td class="status-cell status-success">100%</td>
+                                        <td class="status-cell status-success">+</td>
+                                    </tr>
+                                    
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+
+                <div class="task-item">
+                    <div class="task-header">
+                        <div class="task-title">Task_1_1_2</div>
+                        <div class="task-status status-completed">Успешно</div>
+                    </div>
+                    <div class="task-content">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Студент</th>
+                                    <th>Сборка</th>
+                                    <th>Тесты</th>
+                                    <th>Javadoc</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                
+                                    <tr>
+                                        <td>DanilBelov</td>
+                                        <td class="status-cell status-success">+</td>
+                                        <td class="status-cell status-success">100%</td>
+                                        <td class="status-cell status-success">+</td>
+                                    </tr>
+                                    
+
+                                    <tr>
+                                        <td>KolyaPronin</td>
+                                        <td class="status-cell status-success">+</td>
+                                        <td class="status-cell status-success">100%</td>
+                                        <td class="status-cell status-success">+</td>
+                                    </tr>
+                                    
+
+                                    <tr>
+                                        <td>ArtemMikiyanskii</td>
+                                        <td class="status-cell status-success">+</td>
+                                        <td class="status-cell status-success">100%</td>
+                                        <td class="status-cell status-success">+</td>
+                                    </tr>
+                                    
+
+                                    <tr>
+                                        <td>NikitaAbramkin</td>
+                                        <td class="status-cell status-success">+</td>
+                                        <td class="status-cell status-success">100%</td>
+                                        <td class="status-cell status-success">+</td>
+                                    </tr>
+                                    
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+
+                <div class="task-item">
+                    <div class="task-header">
+                        <div class="task-title">Task_1_1_3</div>
+                        <div class="task-status status-completed">Успешно</div>
+                    </div>
+                    <div class="task-content">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Студент</th>
+                                    <th>Сборка</th>
+                                    <th>Тесты</th>
+                                    <th>Javadoc</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                
+                                    <tr>
+                                        <td>DanilBelov</td>
+                                        <td class="status-cell status-success">+</td>
+                                        <td class="status-cell status-success">100%</td>
+                                        <td class="status-cell status-success">+</td>
+                                    </tr>
+                                    
+
+                                    <tr>
+                                        <td>KolyaPronin</td>
+                                        <td class="status-cell status-success">+</td>
+                                        <td class="status-cell status-success">100%</td>
+                                        <td class="status-cell status-success">+</td>
+                                    </tr>
+                                    
+
+                                    <tr>
+                                        <td>ArtemMikiyanskii</td>
+                                        <td class="status-cell status-success">+</td>
+                                        <td class="status-cell status-success">100%</td>
+                                        <td class="status-cell status-success">+</td>
+                                    </tr>
+                                    
+
+                                    <tr>
+                                        <td>NikitaAbramkin</td>
+                                        <td class="status-cell status-success">+</td>
+                                        <td class="status-cell status-success">100%</td>
+                                        <td class="status-cell status-success">+</td>
+                                    </tr>
+                                    
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+
+                <div class="task-item">
+                    <div class="task-header">
+                        <div class="task-title">Task_1_2_1</div>
+                        <div class="task-status status-completed">Успешно</div>
+                    </div>
+                    <div class="task-content">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Студент</th>
+                                    <th>Сборка</th>
+                                    <th>Тесты</th>
+                                    <th>Javadoc</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                
+                                    <tr>
+                                        <td>DanilBelov</td>
+                                        <td class="status-cell status-success">+</td>
+                                        <td class="status-cell status-success">100%</td>
+                                        <td class="status-cell status-success">+</td>
+                                    </tr>
+                                    
+
+                                    <tr>
+                                        <td>KolyaPronin</td>
+                                        <td class="status-cell status-success">+</td>
+                                        <td class="status-cell status-success">100%</td>
+                                        <td class="status-cell status-success">+</td>
+                                    </tr>
+                                    
+
+                                    <tr>
+                                        <td>ArtemMikiyanskii</td>
+                                        <td class="status-cell status-success">+</td>
+                                        <td class="status-cell status-success">100%</td>
+                                        <td class="status-cell status-success">+</td>
+                                    </tr>
+                                    
+
+                                    <tr>
+                                        <td>NikitaAbramkin</td>
+                                        <td class="status-cell status-success">+</td>
+                                        <td class="status-cell status-success">100%</td>
+                                        <td class="status-cell status-success">+</td>
+                                    </tr>
+                                    
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+
+                <div class="task-item">
+                    <div class="task-header">
+                        <div class="task-title">Task_1_2_2</div>
+                        <div class="task-status status-failed">Неуспешно</div>
+                    </div>
+                    <div class="task-content">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Студент</th>
+                                    <th>Сборка</th>
+                                    <th>Тесты</th>
+                                    <th>Javadoc</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                
+                                    <tr>
+                                        <td>DanilBelov</td>
+                                        <td class="status-cell status-warning">-</td>
+                                        <td class="status-cell status-warning">-</td>
+                                        <td class="status-cell status-warning">-</td>
+                                    </tr>
+                                    
+
+                                    <tr>
+                                        <td>KolyaPronin</td>
+                                        <td class="status-cell status-success">+</td>
+                                        <td class="status-cell status-success">100%</td>
+                                        <td class="status-cell status-success">+</td>
+                                    </tr>
+                                    
+
+                                    <tr>
+                                        <td>ArtemMikiyanskii</td>
+                                        <td class="status-cell status-warning">-</td>
+                                        <td class="status-cell status-warning">-</td>
+                                        <td class="status-cell status-warning">-</td>
+                                    </tr>
+                                    
+
+                                    <tr>
+                                        <td>NikitaAbramkin</td>
+                                        <td class="status-cell status-success">+</td>
+                                        <td class="status-cell status-success">100%</td>
+                                        <td class="status-cell status-success">+</td>
+                                    </tr>
+                                    
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+
+                <div class="task-item">
+                    <div class="task-header">
+                        <div class="task-title">Task_1_3_1</div>
+                        <div class="task-status status-failed">Неуспешно</div>
+                    </div>
+                    <div class="task-content">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Студент</th>
+                                    <th>Сборка</th>
+                                    <th>Тесты</th>
+                                    <th>Javadoc</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                
+                                    <tr>
+                                        <td>DanilBelov</td>
+                                        <td class="status-cell status-warning">-</td>
+                                        <td class="status-cell status-warning">-</td>
+                                        <td class="status-cell status-warning">-</td>
+                                    </tr>
+                                    
+
+                                    <tr>
+                                        <td>KolyaPronin</td>
+                                        <td class="status-cell status-success">+</td>
+                                        <td class="status-cell status-success">100%</td>
+                                        <td class="status-cell status-success">+</td>
+                                    </tr>
+                                    
+
+                                    <tr>
+                                        <td>ArtemMikiyanskii</td>
+                                        <td class="status-cell status-warning">-</td>
+                                        <td class="status-cell status-warning">-</td>
+                                        <td class="status-cell status-warning">-</td>
+                                    </tr>
+                                    
+
+                                    <tr>
+                                        <td>NikitaAbramkin</td>
+                                        <td class="status-cell status-success">+</td>
+                                        <td class="status-cell status-success">100%</td>
+                                        <td class="status-cell status-success">+</td>
+                                    </tr>
+                                    
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+
+                <div class="task-item">
+                    <div class="task-header">
+                        <div class="task-title">Task_1_4_1</div>
+                        <div class="task-status status-failed">Неуспешно</div>
+                    </div>
+                    <div class="task-content">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Студент</th>
+                                    <th>Сборка</th>
+                                    <th>Тесты</th>
+                                    <th>Javadoc</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                
+                                    <tr>
+                                        <td>DanilBelov</td>
+                                        <td class="status-cell status-warning">-</td>
+                                        <td class="status-cell status-warning">-</td>
+                                        <td class="status-cell status-warning">-</td>
+                                    </tr>
+                                    
+
+                                    <tr>
+                                        <td>KolyaPronin</td>
+                                        <td class="status-cell status-warning">-</td>
+                                        <td class="status-cell status-warning">-</td>
+                                        <td class="status-cell status-warning">-</td>
+                                    </tr>
+                                    
+
+                                    <tr>
+                                        <td>ArtemMikiyanskii</td>
+                                        <td class="status-cell status-warning">-</td>
+                                        <td class="status-cell status-warning">-</td>
+                                        <td class="status-cell status-warning">-</td>
+                                    </tr>
+                                    
+
+                                    <tr>
+                                        <td>NikitaAbramkin</td>
+                                        <td class="status-cell status-warning">-</td>
+                                        <td class="status-cell status-warning">-</td>
+                                        <td class="status-cell status-warning">-</td>
+                                    </tr>
+                                    
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+
+                <div class="task-item">
+                    <div class="task-header">
+                        <div class="task-title">Task_1_5_1</div>
+                        <div class="task-status status-failed">Неуспешно</div>
+                    </div>
+                    <div class="task-content">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Студент</th>
+                                    <th>Сборка</th>
+                                    <th>Тесты</th>
+                                    <th>Javadoc</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                
+                                    <tr>
+                                        <td>DanilBelov</td>
+                                        <td class="status-cell status-warning">-</td>
+                                        <td class="status-cell status-warning">-</td>
+                                        <td class="status-cell status-warning">-</td>
+                                    </tr>
+                                    
+
+                                    <tr>
+                                        <td>KolyaPronin</td>
+                                        <td class="status-cell status-warning">-</td>
+                                        <td class="status-cell status-warning">-</td>
+                                        <td class="status-cell status-warning">-</td>
+                                    </tr>
+                                    
+
+                                    <tr>
+                                        <td>ArtemMikiyanskii</td>
+                                        <td class="status-cell status-warning">-</td>
+                                        <td class="status-cell status-warning">-</td>
+                                        <td class="status-cell status-warning">-</td>
+                                    </tr>
+                                    
+
+                                    <tr>
+                                        <td>NikitaAbramkin</td>
+                                        <td class="status-cell status-warning">-</td>
+                                        <td class="status-cell status-warning">-</td>
+                                        <td class="status-cell status-warning">-</td>
+                                    </tr>
+                                    
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+        </div>
+        
+            </div>
+            <script>
+                
+        document.querySelectorAll('.task-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const content = header.nextElementSibling;
+                content.style.display = content.style.display === 'none' ? 'block' : 'none';
+            });
+        });
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const firstTask = document.querySelector('.task-item');
+            if (firstTask) {
+                const firstContent = firstTask.querySelector('.task-content');
+                firstContent.style.display = 'block';
+            }
+        });
+        
+            </script>
+        </body>
+        </html>
+        
