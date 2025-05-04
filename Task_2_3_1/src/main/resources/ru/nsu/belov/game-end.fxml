@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox alignment="CENTER" spacing="20" xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="ru.nsu.belov.controller.GameEndController">
+    
+    <HBox fx:id="topAppleContainer" alignment="CENTER" spacing="10">
+        <!-- Верхний ряд яблок -->
+    </HBox>
+
+    <Label fx:id="resultLabel" style="-fx-font-size: 24px;"/>
+
+    <HBox fx:id="appleContainer" alignment="CENTER" spacing="10">
+        <!-- Нижний ряд яблок -->
+    </HBox>
+
+    <HBox spacing="20" alignment="CENTER">
+        <Button text="Начать заново" onAction="#restartGame"/>
+        <Button text="Настройки" onAction="#goToSettings"/>
+    </HBox>
+
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20"/>
+    </padding>
+</VBox> 

@@ -8,6 +8,11 @@
       fx:controller="ru.nsu.belov.controller.GameEndController"
       style="-fx-background-color: rgb(180, 200, 150);">
 
+    <!-- Верхний ряд яблок -->
+    <StackPane prefHeight="100" alignment="CENTER">
+        <HBox fx:id="topAppleContainer" spacing="30" alignment="CENTER_LEFT"/>
+    </StackPane>
+
     <Label fx:id="resultLabel" style="-fx-font-size: 48px; -fx-text-fill: white; -fx-font-weight: bold;"/>
 
     <HBox spacing="25" alignment="CENTER">
@@ -17,7 +22,7 @@
                 style="-fx-font-size: 20px; -fx-background-color: #4CAF50; -fx-text-fill: white; -fx-padding: 10 20;"/>
     </HBox>
 
-    <!-- Контейнер для анимированных яблок -->
+    <!-- Нижний ряд яблок -->
     <StackPane prefHeight="100" alignment="CENTER">
         <HBox fx:id="appleContainer" spacing="30" alignment="CENTER_LEFT"/>
     </StackPane>
