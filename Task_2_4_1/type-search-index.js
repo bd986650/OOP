@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"ru.nsu.belov","l":"Main"},{"p":"ru.nsu.belov","l":"RepositoryManager"},{"p":"ru.nsu.belov.model","l":"Student"},{"p":"ru.nsu.belov.config","l":"StudentsConfig"},{"p":"ru.nsu.belov.model","l":"Task"},{"p":"ru.nsu.belov.config","l":"TasksConfig"}];updateSearchResults();
