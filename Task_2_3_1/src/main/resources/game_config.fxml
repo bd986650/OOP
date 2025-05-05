@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+<VBox spacing="20" alignment="CENTER" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="ru.nsu.belov.controller.GameConfigController"
+      style="-fx-background-color: rgb(180, 200, 150);">
+
+    <!-- Логотип -->
+    <ImageView fx:id="logoImageView" fitHeight="200" preserveRatio="true"/>
+
+    <Label text="Настройки игры"
+           style="-fx-font-size: 30px; -fx-text-fill: white; -fx-font-weight: bold;" />
+
+    <GridPane hgap="20" vgap="20" alignment="CENTER">
+        <Label text="Строки:" style="-fx-text-fill: white;" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+        <Slider fx:id="rowsSlider" min="16" max="30" blockIncrement="2" value="20" showTickLabels="true" majorTickUnit="2" minorTickCount="0" snapToTicks="true" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+        <Label text="Колонки:" style="-fx-text-fill: white;" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
+        <Slider fx:id="colsSlider" min="16" max="30" blockIncrement="2" value="20" showTickLabels="true" majorTickUnit="2" minorTickCount="0" snapToTicks="true" GridPane.rowIndex="0" GridPane.columnIndex="3"/>
+
+        <Label text="Длина победы:" style="-fx-text-fill: white;" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+        <TextField fx:id="winLengthField" promptText="например 15" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+        <Label text="Еда:" style="-fx-text-fill: white;" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
+        <TextField fx:id="foodField" promptText="например 3" GridPane.rowIndex="1" GridPane.columnIndex="3"/>
+    </GridPane>
+
+    <ComboBox fx:id="speedComboBox" prefWidth="200">
+        <items>
+            <FXCollections fx:factory="observableArrayList">
+                <String fx:value="Быстро"/>
+                <String fx:value="Средне"/>
+                <String fx:value="Медленно"/>
+            </FXCollections>
+        </items>
+    </ComboBox>
+
+    <Button text="Начать игру" onAction="#startGame"
+            style="-fx-font-size: 20px; -fx-background-color: #4CAF50; -fx-text-fill: white; -fx-padding: 10 20;"/>
+
+    <!-- Новый блок для движущихся яблок -->
+    <StackPane prefHeight="100" alignment="CENTER">
+        <HBox fx:id="appleContainer" spacing="30" alignment="CENTER_LEFT"/>
+    </StackPane>
+</VBox>
