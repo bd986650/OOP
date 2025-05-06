@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ru.nsu.belov.IntegrationTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-05-06T03:10:34" hostname="MacBook-Air-Danil-2.local" time="1.049">
+  <properties/>
+  <testcase name="testFullSystem()" classname="ru.nsu.belov.IntegrationTest" time="1.049"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[Could not start worker on port 12345
+java.net.BindException: Address already in use
+	at java.base/sun.nio.ch.Net.bind0(Native Method)
+	at java.base/sun.nio.ch.Net.bind(Net.java:565)
+	at java.base/sun.nio.ch.Net.bind(Net.java:554)
+	at java.base/sun.nio.ch.NioSocketImpl.bind(NioSocketImpl.java:636)
+	at java.base/java.net.ServerSocket.bind(ServerSocket.java:391)
+	at java.base/java.net.ServerSocket.<init>(ServerSocket.java:278)
+	at java.base/java.net.ServerSocket.<init>(ServerSocket.java:171)
+	at ru.nsu.belov.worker.DistributedPrimeCheckerWorker.main(DistributedPrimeCheckerWorker.java:15)
+	at ru.nsu.belov.IntegrationTest.lambda$testFullSystem$0(IntegrationTest.java:15)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:572)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:317)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+]]></system-err>
+</testsuite>
