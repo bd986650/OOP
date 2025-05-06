@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"ru.nsu.belov.master","l":"DistributedPrimeCheckerMaster"},{"p":"ru.nsu.belov.worker","l":"DistributedPrimeCheckerWorker"},{"p":"ru.nsu.belov","l":"Main"},{"p":"ru.nsu.belov.shared","l":"NetworkUtils"},{"p":"ru.nsu.belov.shared","l":"PrimeUtils"}];updateSearchResults();

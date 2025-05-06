@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"ru.nsu.belov"},{"l":"ru.nsu.belov.master"},{"l":"ru.nsu.belov.shared"},{"l":"ru.nsu.belov.worker"}];updateSearchResults();
