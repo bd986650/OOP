@@ -4,18 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fb29d37f-06e2-49f5-9c73-08372f68065d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/master.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/worker.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/deploy.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/start-master.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/start-worker.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/belov/master/DistributedPrimeCheckerMaster.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/belov/shared/NetworkUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/belov/shared/PrimeUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/belov/worker/DistributedPrimeCheckerWorker.java" afterDir="false" />
-    </list>
+    <list default="true" id="fb29d37f-06e2-49f5-9c73-08372f68065d" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -36,9 +25,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 1
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
   <component name="ProjectId" id="2wejqf1lZVSfw4iL5tGB7XvUuLP" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -50,7 +39,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "Task__2__4__1",
+    "git-widget-placeholder": "Task__2__1__2",
     "kotlin-language-version-configured": "true",
     "settings.editor.selected.configurable": "configurable.group.editor"
   }
