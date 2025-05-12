@@ -1,0 +1,60 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'jacoco'
+}
+
+group = 'ru.nsu.belov'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.slf4j:slf4j-api:1.7.36'
+    implementation 'ch.qos.logback:logback-classic:1.2.11'
+    
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.2'
+}
+
+application {
+    mainClass = 'ru.nsu.belov.Main'
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'ru.nsu.belov.Main'
+    }
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
+
+task buildDist(type: Copy) {
+    dependsOn jar
+    into 'build/dist'
+    from jar
+    from 'config'
+    from 'scripts'
+    into('lib') {
+        from configurations.runtimeClasspath
+    }
+}
+
+task deploy(type: Exec) {
+    dependsOn buildDist
+    commandLine './scripts/deploy.sh', 'build/dist/distributed-prime-checker.jar', 'host1', 'host2'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+jacocoTestReport {
+    reports {
+        xml.required = true
+    }
+}

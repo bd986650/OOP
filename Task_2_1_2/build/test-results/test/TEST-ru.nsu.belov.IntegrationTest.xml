@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ru.nsu.belov.IntegrationTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-05-12T07:33:51" hostname="WS4211-17" time="1.044">
+  <properties/>
+  <testcase name="testFullSystem()" classname="ru.nsu.belov.IntegrationTest" time="1.044"/>
+  <system-out><![CDATA[Worker started on port 12345
+Accepted connection from /127.0.0.1
+Accepted connection from /127.0.0.1
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
