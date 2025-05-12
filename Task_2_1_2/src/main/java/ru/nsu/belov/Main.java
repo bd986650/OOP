@@ -21,7 +21,7 @@ public class Main {
             DistributedPrimeCheckerWorker.main(workerArgs);
         } else if ("master".equalsIgnoreCase(mode)) {
             if (args.length < 3) {
-                System.out.println("Master requires numbers and at least one worker address");
+                System.out.println("Master requires numbers and at least one worker running");
                 return;
             }
 
