@@ -1,0 +1,12 @@
+{
+  "bakers": [
+    { "id": 1, "speed": 2000 },
+    { "id": 2, "speed": 3000 }
+  ],
+  "couriers": [
+    { "id": 1, "capacity": 3 },
+    { "id": 2, "capacity": 5 }
+  ],
+  "storageCapacity": 10,
+  "simulationTime": 60000
+}
